@@ -1,0 +1,813 @@
+openapi: 3.0.0
+info:
+  title: Unifonic Authenticate Call Management and Status Rest API
+  description: Handles verifications with OTP to multiple channels
+  contact:
+    name: Unifonic Support
+    url: support.unifonic.com/
+    email: support@unifonic.com
+  version: 2.0.0
+servers:
+- url: https://authenticate.cloud.api.unifonic.com
+  variables: {}
+security:
+- authenticate-app-id: []
+  Authorization: []
+tags:
+- name: Rest
+  description: ''
+paths:
+  /rest/SMS/messages/scheduledmessages:
+    delete:
+      description: Unifonic Stop scheduled messages API allows you to Delete (Stops) scheduled message,If MessageID is specified only one message is stopped, Otherwise all messages are stopped through simple RESTful APIs.
+      summary: Stop Scheduled Messages
+      tags:
+      - Rest
+      operationId: StopScheduledMessages
+      deprecated: false
+      parameters:
+      - name: AppSid
+        in: query
+        required: true
+        description: A character string that uniquely identifies your app
+        example: dY2397564nsjfgwtSDE
+        schema:
+          type: string
+      - name: MessageID
+        in: query
+        required: false
+        description: A unique ID that identifies a message
+        schema:
+          type: integer
+          format: int64
+      - name: responseFormat
+        in: query
+        required: false
+        description: support json format only
+        schema:
+          type: string
+      - name: baseEncode
+        in: query
+        required: false
+        description: Binary-to-text encoding schemes that represent binary data in an ASCII string format
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopScheduledMessagesresponse'
+              examples:
+                response:
+                  value:
+                    success: 'true'
+                    message: ''
+                    errorCode: ER-00
+                    data: {}
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema: {}
+        '455':
+          description: Scheduled message not found for this User
+          content:
+            application/json:
+              schema: {}
+    post:
+      description: Unifonic Send Scheduled API allows you to schedule text messages to users around the globe through simple RESTful API to be sent in future.
+      summary: Send Scheduled Messages
+      tags:
+      - Rest
+      operationId: SendScheduledMessages
+      deprecated: false
+      parameters:
+      - name: AppSid
+        in: query
+        required: true
+        description: A character string that uniquely identifies your app
+        example: dY2397564nsjfgwtSDE
+        schema:
+          type: string
+      - name: SenderID
+        in: query
+        required: true
+        description: The SenderID to send from, App default SenderID is used unless else stated
+        example: UNISMS
+        schema:
+          type: string
+      - name: Recipient
+        in: query
+        required: true
+        description: 'Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)'
+        example: '966000000000'
+        schema:
+          type: integer
+          format: int64
+      - name: Body
+        in: query
+        required: true
+        description: Message body supports both English and unicodes characters, concatenated messages is supported
+        example: Salam Alaikum!
+        schema:
+          type: string
+      - name: TimeScheduled
+        in: query
+        required: true
+        description: Schedule send messages, in the following format yyyy-mm-dd HH:mm:ss
+        example: '2023-12-31 23:59:59'
+        schema:
+          type: string
+          format: date-time-rfc1123
+      - name: responseType
+        in: query
+        required: false
+        description: Support json format only
+        schema:
+          type: string
+      - name: CorrelationID
+        in: query
+        required: false
+        description: Is a unique identifier value that is attached to requests and messages
+        schema:
+          type: string
+      - name: baseEncode
+        in: query
+        required: false
+        description: Binary-to-text encoding schemes that represent binary data in an ASCII string format
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sendscheduledmessagesresponse'
+              examples:
+                response:
+                  value:
+                    success: true
+                    message: ''
+                    errorCode: ER-00
+                    Status: Accepted
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema: {}
+        '406':
+          description: Wrong parameter format
+          content:
+            application/json:
+              schema: {}
+        '449':
+          description: Message body is empty
+          content:
+            application/json:
+              schema: {}
+        '451':
+          description: TimeScheduled parameter must indicate time in the future
+          content:
+            application/json:
+              schema: {}
+        '480':
+          description: This user cannot use specified SenderID
+          content:
+            application/json:
+              schema: {}
+        '482':
+          description: Invalid dest num
+          content:
+            application/json:
+              schema: {}
+    get:
+      description: Unifonic Scheduled message details allows you to get details of scheduled messages through simple RESTful APIs
+      summary: Scheduled Message Details
+      tags:
+      - Rest
+      operationId: ScheduledMessageDetails
+      deprecated: false
+      parameters:
+      - name: AppSid
+        in: query
+        required: true
+        description: A character string that uniquely identifies your app
+        example: dY2397564nsjfgwtSDE
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetScheduledMessageresponse'
+              examples:
+                response:
+                  value:
+                    success: true
+                    message: ''
+                    errorCode: ER-00
+                    data:
+                      messages:
+                      - MessageID: 3200017885421
+                        Status: Scheduled
+                        MessageBody: Team
+                        SenderID: UNISMS
+                        Recipient: '966000000000'
+                        DateCreated: '2018-04-30 08:51:41.842'
+                        TimeScheduled: '2020-04-12 11:50:00'
+                      TotalTextMessages: 1
+                      Next: ''
+                      Prev: ''
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema: {}
+  /rest/SMS/Messages/GetMessagesDetails:
+    post:
+      description: Unifonic Get message details API allows you to get details of messages with optional filters,returns paginated messages, next page or previous page through simple RESTful APIs
+      summary: Get Message Details
+      tags:
+      - Rest
+      operationId: GetMessageDetails
+      deprecated: false
+      parameters:
+      - name: AppSid
+        in: query
+        required: true
+        description: A character string that uniquely identifies your app
+        example: dY2397564nsjfgwtSDE
+        schema:
+          type: string
+      - name: MessageID
+        in: query
+        required: false
+        description: A unique ID that identifies a message
+        schema:
+          type: integer
+          format: int64
+      - name: senderID
+        in: query
+        required: false
+        description: The SenderID to send from, App default SenderID is used unless else stated
+        example: UNISMS
+        schema:
+          type: string
+      - name: Recipient
+        in: query
+        required: false
+        description: 'Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)'
+        example: '966000000000'
+        schema:
+          type: integer
+          format: int64
+      - name: dateFrom
+        in: query
+        required: false
+        description: The start date for the report time interval, date format should be yyyy-mm-dd
+        schema:
+          type: string
+          format: date
+      - name: dateTo
+        in: query
+        required: false
+        description: The end date for the report time interval, date format should be yyyy-mm-dd
+        schema:
+          type: string
+          format: date
+      - name: CorrelationID
+        in: query
+        required: false
+        description: Is a unique identifier value that is attached to requests and messages
+        schema:
+          type: string
+      - name: Limit
+        in: query
+        required: false
+        description: The maximum number of messages details
+        schema:
+          type: integer
+          format: int64
+      - name: baseEncode
+        in: query
+        required: false
+        description: Binary-to-text encoding schemes that represent binary data in an ASCII string format
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMessagesDetailsresponse'
+              examples:
+                response:
+                  value:
+                    success: true
+                    message: ''
+                    errorCode: ER-00
+                    data:
+                      messages:
+                      - MessageID: 3200017858868
+                        CorrelationID: ''
+                        Status: ''
+                        MessageBody: success
+                        Country: World
+                        DLR: Queued
+                        NumberOfUnits: 0
+                        Cost: 0
+                        SenderID: sender
+                        Recipient: '966000000000'
+                        DateCreated: '2018-04-11 07:58:54.563'
+                        DateSent: '2018-04-11 07:58:54.618'
+                      CurrencyCode: ''
+                      TotalTextMessages: 1
+                      Next: ''
+                      Prev: ''
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema: {}
+        '432':
+          description: MessageId must be numeric
+          content:
+            application/json:
+              schema: {}
+        '599':
+          description: Request failed
+          content:
+            application/json:
+              schema: {}
+  /rest/SMS/messages:
+    post:
+      description: Unifonic Send API allows you to send  text messages to users around the globe through simple RESTful APIs
+      summary: Send message
+      tags:
+      - Rest
+      operationId: Sendmessage
+      deprecated: false
+      parameters:
+      - name: AppSid
+        in: query
+        required: true
+        description: A character string that uniquely identifies your app
+        example: dY2397564nsjfgwtSDE
+        schema:
+          type: string
+      - name: SenderID
+        in: query
+        required: true
+        description: The SenderID to send from, App default SenderID is used unless else stated
+        example: UNISMS
+        schema:
+          type: string
+      - name: Body
+        in: query
+        required: true
+        description: Message body supports both English and unicodes characters, concatenated messages is supported
+        example: Salam Alaikum!
+        schema:
+          type: string
+      - name: Recipient
+        in: query
+        required: true
+        description: 'Destination mobile number, mobile numbers must be in international format without 00 or + Example: (9660000000000)'
+        example: '966000000000'
+        schema:
+          type: integer
+          format: int64
+      - name: responseType
+        in: query
+        required: false
+        description: Support json format only
+        schema:
+          type: string
+      - name: CorrelationID
+        in: query
+        required: false
+        description: Is a unique identifier value that is attached to requests and messages
+        schema:
+          type: string
+      - name: baseEncode
+        in: query
+        required: false
+        description: Binary-to-text encoding schemes that represent binary data in an ASCII string format
+        schema:
+          type: boolean
+      - name: statusCallback
+        in: query
+        required: false
+        description: The statusCallback is used by the client to receive SMS delivery status. It must be a valid HTTPS URL and should resolve to a public IP address only.
+        schema:
+          type: string
+      - name: async
+        in: query
+        required: false
+        description: It specifies that the request will be executed asynchronously as soon as it is sent
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sendresponse'
+              examples:
+                response:
+                  value:
+                    success: 'true'
+                    message: ''
+                    errorCode: ER-00
+                    data:
+                      MessageID: 3200017889310
+                      CorrelationID: ''
+                      Status: Queued
+                      NumberOfUnits: 0
+                      Cost: 0
+                      Balance: 0
+                      Recipient: '966000000000'
+                      TimeCreated: '2018-05-07 06:41:53.237'
+                      CurrencyCode: ''
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema: {}
+        '449':
+          description: Message body is empty
+          content:
+            application/json:
+              schema: {}
+        '480':
+          description: This user cannot use specified SenderID
+          content:
+            application/json:
+              schema: {}
+        '482':
+          description: Invalid dest num
+          content:
+            application/json:
+              schema: {}
+components:
+  schemas:
+    GetMessagesDetailsresponse:
+      title: GetMessagesDetailsresponse
+      description: Gets details of messages with optional filters. Returns paginated messages, next page or previous page
+      example:
+        success: true
+        message: ''
+        errorCode: ER-00
+        data:
+          messages:
+          - MessageID: 3200017891896
+            CorrelationID: ''
+            Status: Sent
+            MessageBody: test
+            Country: World
+            DLR: Sent
+            NumberOfUnits: 0
+            Cost: 0
+            SenderID: sender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-14 08:20:25.580'
+            DateSent: '2018-05-14 08:20:25.621'
+          CurrencyCode: ''
+          TotalTextMessages: 1
+          Next: ''
+          Prev: ''
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: true
+          type: boolean
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: ''
+          type: string
+        errorCode:
+          description: the error code if there is any
+          example:
+            errorCode: ER-00
+          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          type: object
+      required:
+      - success
+      - message
+      - errorCode
+      - data
+    StopScheduledMessagesresponse:
+      title: StopScheduledMessagesresponse
+      description: Delete (Stops) scheduled message,If MessageID is specified, only one message is stopped.  Otherwise all messages are stopped
+      example:
+        success: 'true'
+        message: ''
+        errorCode: ER-00
+        data: {}
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: 'true'
+          type: string
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: Missing parameter AppSid
+          type: string
+        errorCode:
+          description: Error Code if there is an error
+          example:
+            errorCode: ER-02
+          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          example:
+            data: {}
+          type: object
+      required:
+      - success
+      - message
+      - errorCode
+      - data
+    Sendresponse:
+      title: Sendresponse
+      description: Sends one message.
+      type: object
+      properties:
+        success:
+          description: The message sent successfully
+          example: 'true'
+          type: string
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: ''
+          type: string
+        errorCode:
+          description: The error code if there is any
+          example:
+            errorCode: ER-00
+          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          example:
+            success: true
+            message: ''
+            errorCode: ER-00
+            data:
+              MessageID: 2000000205103
+              CorrelationID: ''
+              Status: Queued
+              NumberOfUnits: 0
+              Cost: 0
+              Balance: 0
+              Recipient: '966000000000'
+              TimeCreated: '2018-05-21 08:17:47.839'
+              CurrencyCode: ''
+          type: object
+      required:
+      - success
+      - message
+      - errorCode
+      - data
+    GetScheduledMessageresponse:
+      title: GetScheduledMessageresponse
+      description: GetsDetails of specified scheduled message, If MessageID is specified, only one message is returned,Otherwise all messages(paginated) are queried.
+      example:
+        success: true
+        message: ''
+        errorCode: ER-00
+        data:
+          messages:
+          - MessageID: 3200017891899
+            Status: Stopped
+            MessageBody: Test
+            SenderID: sender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-14 08:24:20.051'
+            TimeScheduled: '2020-04-12 11:50:00'
+          - MessageID: 3200017891882
+            Status: Stopped
+            MessageBody: Test
+            SenderID: sender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-14 08:04:32.604'
+            TimeScheduled: '2020-04-12 11:50:00'
+          - MessageID: 3200017891543
+            Status: Rejected
+            MessageBody: Body6
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 09:11:16.450'
+            TimeScheduled: ''
+          - MessageID: 3200017891541
+            Status: Stopped
+            MessageBody: success4
+            SenderID: AltSender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-13 09:09:49.876'
+            TimeScheduled: '2018-09-22 11:46:00'
+          - MessageID: 3200017891540
+            Status: Rejected
+            MessageBody: success4
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 09:09:40.891'
+            TimeScheduled: ''
+          - MessageID: 3200017891537
+            Status: Rejected
+            MessageBody: success4
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 09:03:12.833'
+            TimeScheduled: ''
+          - MessageID: 3200017891536
+            Status: Stopped
+            MessageBody: success4
+            SenderID: sender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-13 09:03:03.145'
+            TimeScheduled: '2018-09-22 11:46:00'
+          - MessageID: 3200017891535
+            Status: Stopped
+            MessageBody: Body6
+            SenderID: AltSender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-13 09:01:36.155'
+            TimeScheduled: '2020-04-12 11:53:00'
+          - MessageID: 3200017891530
+            Status: Rejected
+            MessageBody: h545454
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 08:53:40.551'
+            TimeScheduled: ''
+          - MessageID: 3200017891529
+            Status: Rejected
+            MessageBody: h
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 08:51:04.005'
+            TimeScheduled: ''
+          - MessageID: 3200017891527
+            Status: Stopped
+            MessageBody: h
+            SenderID: AltSender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-13 08:48:48.225'
+            TimeScheduled: '2023-12-07 03:04:00'
+          - MessageID: 3200017891523
+            Status: Rejected
+            MessageBody: h
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 08:47:53.420'
+            TimeScheduled: ''
+          - MessageID: 3200017891522
+            Status: Rejected
+            MessageBody: ''
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 08:46:52.311'
+            TimeScheduled: ''
+          - MessageID: 3200017891501
+            Status: Stopped
+            MessageBody: Body6
+            SenderID: AltSender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-13 08:15:12.055'
+            TimeScheduled: '2020-04-12 11:53:00'
+          - MessageID: 3200017891500
+            Status: Stopped
+            MessageBody: Body6
+            SenderID: AltSender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-13 08:12:52.369'
+            TimeScheduled: '2020-04-12 11:53:00'
+          - MessageID: 3200017891496
+            Status: Rejected
+            MessageBody: Team
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 08:10:53.740'
+            TimeScheduled: ''
+          - MessageID: 3200017891495
+            Status: Rejected
+            MessageBody: ''
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 08:10:48.342'
+            TimeScheduled: ''
+          - MessageID: 3200017891494
+            Status: Stopped
+            MessageBody: Body6
+            SenderID: AltSender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-13 08:08:27.709'
+            TimeScheduled: '2020-04-12 11:53:00'
+          - MessageID: 3200017891493
+            Status: Rejected
+            MessageBody: Body6
+            SenderID: ''
+            Recipient: ''
+            DateCreated: '2018-05-13 08:08:18.874'
+            TimeScheduled: ''
+          - MessageID: 3200017891492
+            Status: Stopped
+            MessageBody: Body6
+            SenderID: AltSender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-13 08:07:31.727'
+            TimeScheduled: '2020-04-12 11:53:00'
+          TotalTextMessages: 20
+          Next: http://basic.unifonic.com/rest/SMS/2017-08-01/messages/scheduledmessages?AppSid=6v253153s1g7831s5&beforeSid=966000000000,7,AltSender,3200017891492,,2018-05-13%2008:07:31.727&Limit=20
+          Prev: ''
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: true
+          type: boolean
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: ''
+          type: string
+        errorCode:
+          description: the error code if there is any
+          example:
+            errorCode: ER-00
+          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          type: object
+      required:
+      - success
+      - message
+      - errorCode
+      - data
+    Sendscheduledmessagesresponse:
+      title: Sendscheduledmessagesresponse
+      description: Schedules one message to be sent in the future.
+      example:
+        success: true
+        message: ''
+        errorCode: ER-00
+        Status: Accepted
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: true
+          type: boolean
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: Missing parameter AppSid
+          type: string
+        errorCode:
+          description: The error code if there is any
+          example:
+            errorCode: ER-02
+          type: string
+        Status:
+          description: Accepted or Rejected
+          example:
+            Status: Rejected
+          type: string
+      required:
+      - success
+      - message
+      - errorCode
+      - Status
+  securitySchemes:
+    authenticate-app-id:
+      type: apiKey
+      name: x-authenticate-app-id
+      in: header
+    Authorization:
+      type: apiKey
+      description: Bearer Auth Token
+      name: Authorization
+      in: header
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

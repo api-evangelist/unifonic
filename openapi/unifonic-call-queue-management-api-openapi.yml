@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  title: Unifonic Authenticate Call Management and Status Call Queue Management API
+  description: Handles verifications with OTP to multiple channels
+  contact:
+    name: Unifonic Support
+    url: support.unifonic.com/
+    email: support@unifonic.com
+  version: 2.0.0
+servers:
+- url: https://authenticate.cloud.api.unifonic.com
+  variables: {}
+security:
+- authenticate-app-id: []
+  Authorization: []
+tags:
+- name: Call Queue Management
+paths:
+  /providers/queues/{queueName}:
+    get:
+      operationId: getSpecificQueue
+      summary: Retrieves a specific call queue
+      description: This operation retrieves the details in a specific call queue
+      tags:
+      - Call Queue Management
+      parameters:
+      - name: queueName
+        description: the queue name where the queue details is to be retrieved
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/QueuedCalls'
+  /providers/queues/{queueName}/dequeue:
+    post:
+      operationId: dequeueFIFO
+      summary: Dequeue the first caller in queue
+      description: This operation creates a request to dequeue the caller who is currently the first in line towards another callerId which represents the service agent.
+      tags:
+      - Call Queue Management
+      parameters:
+      - name: redirectTo
+        description: the callerId to redirect the call to
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: queueName
+        description: Requested number of resources to be provided in response
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+components:
+  schemas:
+    QueuedCalls:
+      type: object
+      properties:
+        callId:
+          type: string
+          description: callId referencing this inbound call
+        waitingTime:
+          type: string
+          example: '500'
+          description: duration, in seconds, of the caller waiting in the queue
+        position:
+          type: string
+          example: '1'
+          description: position in the queue
+        dateEnqueued:
+          type: string
+          example: Wed, 09 Mar 2022 09:08:42 +0000
+          description: date and time when the call was added to queue
+  securitySchemes:
+    authenticate-app-id:
+      type: apiKey
+      name: x-authenticate-app-id
+      in: header
+    Authorization:
+      type: apiKey
+      description: Bearer Auth Token
+      name: Authorization
+      in: header
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: Unifonic Authenticate Call Management and Status Webhooks API
+  description: Handles verifications with OTP to multiple channels
+  contact:
+    name: Unifonic Support
+    url: support.unifonic.com/
+    email: support@unifonic.com
+  version: 2.0.0
+servers:
+- url: https://authenticate.cloud.api.unifonic.com
+  variables: {}
+security:
+- authenticate-app-id: []
+  Authorization: []
+tags:
+- name: Webhooks
+paths:
+  /providers/webhook:
+    post:
+      operationId: createsWebhook
+      summary: Creates a Webhook
+      description: This operation creates a Webhook for a particular voice application
+      tags:
+      - Webhooks
+      parameters:
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/Create_Webhook'
+        description: payload for webhook creation. The url as specified will receive all of the call updates taking place on this voice application.
+        required: true
+      responses:
+        '201':
+          description: Created
+components:
+  schemas:
+    Create_Webhook:
+      type: object
+      description: payload
+      properties:
+        url:
+          type: string
+          description: url to receive the webhook notifications
+        basicAuthNeeded:
+          type: boolean
+          description: true or false
+        username:
+          type: string
+          description: username for Base64
+        password:
+          type: string
+          description: password for Base64
+  securitySchemes:
+    authenticate-app-id:
+      type: apiKey
+      name: x-authenticate-app-id
+      in: header
+    Authorization:
+      type: apiKey
+      description: Bearer Auth Token
+      name: Authorization
+      in: header
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

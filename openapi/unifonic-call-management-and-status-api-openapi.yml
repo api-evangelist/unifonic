@@ -1,0 +1,280 @@
+openapi: 3.0.0
+info:
+  title: Unifonic Authenticate Call Management and Status API
+  description: Handles verifications with OTP to multiple channels
+  contact:
+    name: Unifonic Support
+    url: support.unifonic.com/
+    email: support@unifonic.com
+  version: 2.0.0
+servers:
+- url: https://authenticate.cloud.api.unifonic.com
+  variables: {}
+security:
+- authenticate-app-id: []
+  Authorization: []
+tags:
+- name: Call Management and Status
+paths:
+  /calls:
+    post:
+      operationId: CreateCall
+      summary: Creates an Outbound Call
+      parameters:
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/Call_Create'
+        description: Recipient, callerId, call instructions
+        required: true
+      description: This operation creates a request to generate outbound calls to a list of recipients specified within the API payload.
+      tags:
+      - Call Management and Status
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Call_Create_Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error500'
+  /providers/voice-call-log/{callId}:
+    get:
+      operationId: retrieveStatusOfCall
+      summary: Retrieves call status
+      description: 'This operation retrieves the call status(es) of all the dials pertaining to a particular callId. A callId is provided in the API response whenever a POST/Calls API is accepted. '
+      tags:
+      - Call Management and Status
+      parameters:
+      - name: callId
+        description: identifier of the call API request
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/GetCallResponse'
+components:
+  schemas:
+    RecipientArray:
+      type: object
+      description: recipient array
+      properties:
+        duration:
+          type: string
+          description: duration of call
+        status:
+          $ref: '#/components/schemas/Status'
+        number:
+          type: string
+    Error400:
+      description: Used when an API throws an Error, typically with a HTTP error response-code 400
+      type: object
+      required:
+      - message
+      - errors
+      properties:
+        message:
+          type: string
+          description: Application relevant detail, defined in the API or a common list.
+        errors:
+          type: string
+          description: Explanation of the reason for the error which can be shown to a client user.
+    Recipient:
+      type: string
+      description: recipient array
+      example: '+966554999999'
+    GetCallResponse:
+      type: object
+      description: API response for call creation
+      properties:
+        callId:
+          type: string
+          description: status of the call request
+        type:
+          $ref: '#/components/schemas/Type'
+        retry:
+          type: string
+          description: retries attempted on this call
+        callerId:
+          type: string
+          description: callerId used to make the call
+        recipients:
+          type: array
+          description: recipient list
+          items:
+            $ref: '#/components/schemas/RecipientArray'
+    Type:
+      type: string
+      description: Possible values for the status of the Usage
+      enum:
+      - ivr
+      - audioUrl
+      - otp
+      - tts
+    Call_Create_Response:
+      type: object
+      description: API response for call creation
+      properties:
+        callId:
+          type: string
+          description: unique identifier
+        status:
+          type: string
+          example: Request has been sent.
+          description: status of the call request
+        referenceId:
+          type: string
+          description: referenceId as specified in payload
+    Error403:
+      description: Used when an API throws an Error, typically with a HTTP error response-code 403
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          example: Missing Authentication Token
+          description: Application relevant detail, defined in the API or a common list.
+    Ivr:
+      type: object
+      description: ivr call instruction. Only required when type is chosen as ivr.
+      required:
+      - language
+      - voice
+      properties:
+        say:
+          type: string
+          example: Hello, how is your day?
+          description: If a say parameter is present, a language and voice parameter is compulsory/required. The content within the say parameter will be processed through a text-to-speech converter and the audio file will be generated and played over the call.
+        language:
+          type: string
+          description: english or arabic
+        voice:
+          type: string
+          description: male or female
+        play:
+          type: string
+          description: audioId taken from Unifonic Console
+        loop:
+          type: string
+          description: number of times a say or play message is repeated
+        responseUrl:
+          type: string
+          format: url
+          description: a POST API which allows Unifonic to send the DTMF digits that was inputted by the end user.
+        onEmptyResponse:
+          type: string
+          description: in cases where the end user does not respond to the ivr question, this message will be played and the call will terminate.
+        speechCollectionLanguage:
+          type: string
+          description: if present, then the response collection activity will be done via speech recognition with this defined language. Supports english and arabic only.
+        digitsLimit:
+          type: string
+          description: the number of digits you expect to receive from the end user's input. for example, if digitsLimit is 1, then the only the first digit from the end user is collected.
+        transfer:
+          type: string
+          example: '+96654999999'
+          description: the callerId where the call is going to be transferred to
+        queueName:
+          type: string
+          description: name of the queue which an incoming call is to be added to
+    Status:
+      type: string
+      description: status of a call
+      enum:
+      - queued
+      - completed
+      - busy
+      - failed
+      - rejected
+      - cancelled
+    Error500:
+      description: Used when an API throws an Error, typically with a HTTP error response-code 500
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          example: 'null'
+          description: Application relevant detail, defined in the API or a common list.
+    Call_Create:
+      type: object
+      description: A payload for call creation. Most of the fields would be found to be optional. A combination of different fields typically result in different call experiences.
+      required:
+      - recipient
+      - callerId
+      - type
+      properties:
+        recipient:
+          type: array
+          description: Description of usage
+          items:
+            $ref: '#/components/schemas/Recipient'
+        callerId:
+          example: '+966115219000'
+          type: string
+          description: callerId which is used to send the outbound calls
+        type:
+          $ref: '#/components/schemas/Type'
+        callRecording:
+          type: boolean
+          description: optional field. Setting to true would result in a recorded call, call recording will be made available on the Unifonic Console
+        expiry:
+          example: '2020-09-21T09:13:16.000Z'
+          type: string
+          description: Date and Time of Expiry
+        ivr:
+          $ref: '#/components/schemas/Ivr'
+        referenceId:
+          type: string
+          description: any content that is of relevance, as this will be appended as a query in all responses and webhook notification
+  securitySchemes:
+    authenticate-app-id:
+      type: apiKey
+      name: x-authenticate-app-id
+      in: header
+    Authorization:
+      type: apiKey
+      description: Bearer Auth Token
+      name: Authorization
+      in: header
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

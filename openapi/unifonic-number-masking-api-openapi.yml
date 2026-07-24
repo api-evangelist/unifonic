@@ -1,0 +1,250 @@
+openapi: 3.0.0
+info:
+  title: Unifonic Authenticate Call Management and Status Number Masking API
+  description: Handles verifications with OTP to multiple channels
+  contact:
+    name: Unifonic Support
+    url: support.unifonic.com/
+    email: support@unifonic.com
+  version: 2.0.0
+servers:
+- url: https://authenticate.cloud.api.unifonic.com
+  variables: {}
+security:
+- authenticate-app-id: []
+  Authorization: []
+tags:
+- name: Number Masking
+paths:
+  /providers/masks:
+    get:
+      operationId: retrieveAllMaskingSessions
+      summary: Retrieves all masking sessions
+      description: This operation retrieves a list of all masking sessions
+      tags:
+      - Number Masking
+      parameters:
+      - name: toDate
+        description: date ending with
+        required: false
+        in: query
+        schema:
+          type: string
+      - name: fromDate
+        description: date starting with
+        required: false
+        in: query
+        schema:
+          type: integer
+      - name: sort
+        description: asc or desc
+        required: true
+        in: query
+        schema:
+          type: integer
+      - name: status
+        description: active or inactive
+        required: false
+        in: query
+        schema:
+          type: integer
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Get_Masking_Sessions'
+    post:
+      operationId: createTwoWayNumberMaskingSession
+      summary: Creates a Two Way Number Masking Session
+      description: This operation creates a Number Masking session for two parties.
+      tags:
+      - Number Masking
+      parameters:
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/Two_Way_Masking_Session_Create'
+        description: The parties in a number masking session
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Create_Masking_Session_Response'
+  /providers/config/masks:
+    post:
+      operationId: createOneWayNumberMaskingSession
+      summary: Creates a One Way Number Masking Session
+      description: This operation creates a Number Masking session for one party.
+      tags:
+      - Number Masking
+      parameters:
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/One_Way_Masking_Session_Create'
+        description: The parties in a number masking session
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Create_Masking_Session_Response'
+  /providers/{maskId}:
+    get:
+      operationId: retrieveSpecificMaskingSession
+      summary: Retrieves details of a specific masking session
+      description: This operation list or find UsageSpecification entities
+      tags:
+      - Number Masking
+      parameters:
+      - name: maskId
+        description: Identifier of the specific Number Masking Session
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Create_Masking_Session_Response'
+    delete:
+      operationId: deactivatesNumberMaskingSession
+      summary: Deactivates a specific masking session
+      description: This operation deactivates a Masking Session. Parties can no longer contact each other after this operation.
+      tags:
+      - Number Masking
+      parameters:
+      - name: maskId
+        description: Identifier of the Masking Session to be deleted
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: appsId
+        description: applicationId found on Unifonic Console
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success
+components:
+  schemas:
+    Two_Way_Masking_Session_Create:
+      type: object
+      description: payload for creating a number masking session
+      required:
+      - to
+      - from
+      properties:
+        to:
+          type: string
+          example: '+966555000000'
+          description: party A of a number masking session
+        from:
+          type: string
+          example: '+966555000001'
+          description: party B of a number masking session
+    Get_Masking_Sessions:
+      type: object
+      description: all masking sessions in scope
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Create_Masking_Session_Response'
+    Create_Masking_Session_Response:
+      type: object
+      required:
+      - maskId
+      - callerId
+      - status
+      - timeCreation
+      - timeDeactivation
+      - timeExpiry
+      - requestBody
+      properties:
+        maskId:
+          type: string
+          description: identifier of the masking session
+        callerId:
+          type: string
+          description: callerId used for this masking session
+        secondaryCallerId:
+          type: string
+          description: secondary callerId to be used for this masking session
+        status:
+          type: string
+          description: status of this masking session - active or inactive
+        timeCreation:
+          type: string
+          description: date and time of which this session was created
+        timeExpiry:
+          type: string
+          description: data and time of which this session will expire
+        timeDeactivation:
+          type: string
+          description: date and time of which this session was deactivated
+        requestBody:
+          type: string
+          description: payload which was accepted
+    One_Way_Masking_Session_Create:
+      type: object
+      description: payload for creating a number masking session
+      required:
+      - to
+      properties:
+        to:
+          type: string
+          example: '+966555000000'
+          description: party A of a number masking session
+  securitySchemes:
+    authenticate-app-id:
+      type: apiKey
+      name: x-authenticate-app-id
+      in: header
+    Authorization:
+      type: apiKey
+      description: Bearer Auth Token
+      name: Authorization
+      in: header
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  title: Unifonic Authenticate Call Management and Status Verifications API
+  description: Handles verifications with OTP to multiple channels
+  contact:
+    name: Unifonic Support
+    url: support.unifonic.com/
+    email: support@unifonic.com
+  version: 2.0.0
+servers:
+- url: https://authenticate.cloud.api.unifonic.com
+  variables: {}
+security:
+- authenticate-app-id: []
+  Authorization: []
+tags:
+- name: Verifications
+  description: ''
+paths:
+  /services/api/v2/verifications/check:
+    post:
+      tags:
+      - Verifications
+      summary: Check Verification
+      description: 'This API is used for verification of the OTP. In case any error, error_code will be passed alongwith  the response_status in response.
+
+        - 101 for Correct
+
+        - 107 for Incorrect
+
+        - 108 for Attempts Exceeded
+
+        - 109 for Code Expired
+
+        - 110 for Already Verified'
+      operationId: CheckVerification
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - to
+              - channel
+              - code
+              type: object
+              properties:
+                to:
+                  type: string
+                  description: Address of receiver
+                  example: '+966512345678'
+                channel:
+                  type: string
+                  description: Channel you want to send. Possible values are `sms`, `whatsapp` & `voice`.
+                  example: sms
+                code:
+                  type: string
+                  description: The code which user has entered
+                  example: '12345'
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Verification'
+        '400':
+          description: bad input parameter
+          content:
+            application/json:
+              schema: {}
+      deprecated: false
+  /services/api/v2/verifications/start:
+    post:
+      tags:
+      - Verifications
+      summary: Create Verification
+      description: This endpoint sends a verification code through any of channels mainly `Sms`, `Voice` & `Whatsapp`. By default it sends messages to all configured channels in the Authenticate app.
+      operationId: CreateVerification
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - to
+              type: object
+              properties:
+                to:
+                  type: string
+                  description: Address of receiver
+                  example: '+966512345678'
+                channel:
+                  type: string
+                  description: Channel you want to use for sending verification code. Currently there are three channels  `SMS`, `Voice` & `WhatsApp`. Their priorities can be defined in Unifonic Authenticate configuration panel. By default it will send verification through all of configured channels. If channel is not defined the verification code will be sent on the basis of priority defined for each channel.
+                  example: sms
+                locale:
+                  type: string
+                  description: In what language you want to send
+                  default: en
+                  example: ar
+                length:
+                  type: string
+                  description: Length of verification code
+                  example: '5'
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Verification'
+        '400':
+          description: bad input parameter
+          content:
+            application/json:
+              schema: {}
+      deprecated: false
+components:
+  schemas:
+    Verification:
+      title: Verification
+      required:
+      - to
+      - channel
+      - id
+      - response_status
+      type: object
+      properties:
+        to:
+          type: string
+          description: Address of receiver
+          example: '+966512345678'
+        length:
+          type: integer
+          description: Length of the verification code
+          format: int32
+          example: 5
+        channel:
+          type: string
+          description: Channel that will be used to send verification code. If this channel fails to send verification code. System will use the next highest priority configured channel. Possible values are `sms`, `voice` , `whatsapp`.
+          example: sms
+        locale:
+          type: string
+          description: In what language you want to send `en`, `ar`
+          example: ar
+        code_type:
+          type: string
+          description: The type of code to be generated. `numeric`
+          example: numeric
+        id:
+          enum:
+          - 953c0c21-ef8f-4efe-8482-090d5b967ea0
+          type: string
+          description: Unique if of verification
+          example: 953c0c21-ef8f-4efe-8482-090d5b967ea0
+        response_status:
+          enum:
+          - correct
+          type: string
+          description: Response type in case of check. It could be `correct` and `incorrect` based on the given `code`
+          example: correct
+        error_code:
+          type: integer
+          description: 'In case of error it will contain the error code. Following is a list of error codes: 101(correct), 107(incorrect), 108(attempts_exceeded), 109(code_expired), 110(already_verified)'
+          format: int32
+          example: 101
+      description: ''
+      example:
+        id: 0f001667-0a29-40c4-8904-b4ff8e00d9bd
+        response_status: correct
+        code_type: numeric
+        locale: ar
+        length: 8
+        to: '+966512345678'
+        channel: sms
+  securitySchemes:
+    authenticate-app-id:
+      type: apiKey
+      name: x-authenticate-app-id
+      in: header
+    Authorization:
+      type: apiKey
+      description: Bearer Auth Token
+      name: Authorization
+      in: header
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

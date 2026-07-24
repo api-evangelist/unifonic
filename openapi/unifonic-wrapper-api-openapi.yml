@@ -1,0 +1,203 @@
+openapi: 3.0.0
+info:
+  title: Unifonic Authenticate Call Management and Status Wrapper API
+  description: Handles verifications with OTP to multiple channels
+  contact:
+    name: Unifonic Support
+    url: support.unifonic.com/
+    email: support@unifonic.com
+  version: 2.0.0
+servers:
+- url: https://authenticate.cloud.api.unifonic.com
+  variables: {}
+security:
+- authenticate-app-id: []
+  Authorization: []
+tags:
+- name: Wrapper
+  description: ''
+paths:
+  /wrapper/msgQuery:
+    post:
+      description: Unifonic Get message query API allows you to get details of specified message.
+      summary: Get msgQuery
+      tags:
+      - Wrapper
+      operationId: GetmsgQuery
+      deprecated: false
+      parameters:
+      - name: appsid
+        in: query
+        required: true
+        description: A character string that uniquely identifies your app
+        schema:
+          type: string
+      - name: msgid
+        in: query
+        required: true
+        description: A unique ID that identifies a message
+        schema:
+          type: integer
+          format: int64
+      - name: to
+        in: query
+        required: false
+        description: 'Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)'
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMessageQueryresponse'
+              examples:
+                response:
+                  value:
+                    STATUS05: The message has been sent successfully
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema: {}
+        '402':
+          description: Missing parameter AppSid
+          content:
+            application/json:
+              schema: {}
+        '432':
+          description: MessageId must be numeric
+          content:
+            application/json:
+              schema: {}
+        '452':
+          description: User must specify either messageId or recipient parameter
+          content:
+            application/json:
+              schema: {}
+  /wrapper/sendSMS.php:
+    post:
+      description: Unifonic Send Wrapper API allows you to send  text messages to  multiple users at the same time
+      summary: Send message
+      tags:
+      - Wrapper
+      operationId: PostSendmessage
+      deprecated: false
+      parameters:
+      - name: appsid
+        in: query
+        required: true
+        description: A character string that uniquely identifies your app
+        schema:
+          type: string
+      - name: msg
+        in: query
+        required: true
+        description: Message body supports both English and unicodes characters, concatenated messages is supported
+        schema:
+          type: string
+      - name: to
+        in: query
+        required: true
+        description: 'Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)'
+        schema:
+          type: integer
+          format: int64
+      - name: sender
+        in: query
+        required: true
+        description: The SenderID to send from, App default SenderID is used unless else stated
+        schema:
+          type: string
+      - name: baseEncode
+        in: query
+        required: false
+        description: Binary-to-text encoding schemes that represent binary data in an ASCII string format
+        schema:
+          type: boolean
+          default: false
+      - name: encoding
+        in: query
+        required: false
+        description: Converts information from a source into symbols for communication or storage, GSM7 for English and UCS2 for Arabic
+        schema:
+          type: string
+          default: UCS2
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendWrapperresponse'
+              examples:
+                response:
+                  value:
+                    Error: '0'
+                    MessageID: '2000000140226'
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema: {}
+        '402':
+          description: Missing parameter AppSid
+          content:
+            application/json:
+              schema: {}
+        '459':
+          description: Authentication parameters are incorrectly base64 encoded
+          content:
+            application/json:
+              schema: {}
+components:
+  schemas:
+    GetMessageQueryresponse:
+      title: GetMessageQueryresponse
+      description: Gets details of specified message
+      example:
+        STATUS05: The message has been sent successfully
+      type: object
+      properties:
+        STATUS05:
+          description: The message statues
+          example: '"The message has been sent successfully"'
+          type: string
+      required:
+      - STATUS05
+    SendWrapperresponse:
+      title: SendWrapperresponse
+      description: Sends message to one or more recipients.
+      example:
+        Error: '0'
+        MessageID: '3200017901931'
+      type: object
+      properties:
+        Error:
+          description: The default error code
+          example: '0'
+          type: string
+        MessageID:
+          description: A unique ID that identifies a message
+          example: '3200017901931'
+          type: string
+      required:
+      - Error
+      - MessageID
+  securitySchemes:
+    authenticate-app-id:
+      type: apiKey
+      name: x-authenticate-app-id
+      in: header
+    Authorization:
+      type: apiKey
+      description: Bearer Auth Token
+      name: Authorization
+      in: header
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
