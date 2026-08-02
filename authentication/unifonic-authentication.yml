@@ -1,0 +1,55 @@
+generated: '2026-07-21'
+method: searched
+source: openapi (unifonic-sms, unifonic-authenticate, unifonic-voice) + docs
+docs: https://docs.unifonic.com/articles/api-documentation/security-authentication
+description: >-
+  Provider-wide authentication profile for Unifonic's public APIs, derived from
+  the securitySchemes declared in the three official OpenAPI documents in this
+  repo's openapi/ directory and upgraded with the docs Security &
+  Authentication page. Unifonic uses an AppSid/AppsId application credential
+  model rather than OAuth: the SMS NextGen REST API declares HTTP basic
+  authentication and additionally requires an AppSid query parameter on every
+  operation; the Authenticate (OTP) API authenticates with an
+  x-authenticate-app-id header plus an Authorization bearer-token header; the
+  Voice API uses a custom AppsId credential obtained from the Unifonic
+  Console's Voice Applications tab. HTTPS is recommended for all requests. No
+  oauth2 or openIdConnect security schemes are declared anywhere in the
+  published specs, so there is no OAuth scope surface.
+summary:
+  types: [http-basic, apiKey]
+  api_key_in: [header, query]
+  oauth2_flows: []
+schemes:
+  - name: auth
+    type: http
+    scheme: basic
+    sources: [openapi/unifonic-sms-openapi-original.json]
+    note: >-
+      Declared as the global security requirement of the SMS API. Operations
+      also carry a required AppSid query parameter ("a character string that
+      uniquely identifies your app"); the docs note authentication parameters
+      are base64 encoded (error 459 covers incorrect encoding).
+  - name: authenticate-app-id
+    type: apiKey
+    in: header
+    parameter: x-authenticate-app-id
+    sources: [openapi/unifonic-authenticate-openapi-original.json]
+  - name: Authorization
+    type: apiKey
+    in: header
+    parameter: Authorization
+    description: Bearer Auth Token
+    sources: [openapi/unifonic-authenticate-openapi-original.json]
+  - name: AppsId (Voice)
+    type: custom
+    in: request
+    parameter: AppsId
+    sources: [https://docs.unifonic.com/articles/api-documentation/security-authentication]
+    note: >-
+      "This API uses Custom Authentication - AppsId. AppsId is derived from the
+      Unifonic Console's Voice Application's tab." The published Voice OpenAPI
+      declares no components.securitySchemes.
+credential_provisioning: >-
+  Per the SMS API introduction: "To start using the API you need to send an
+  email to Unifonic to create Appsid for you." Credentials are otherwise
+  managed in the Unifonic cloud console (cloud.unifonic.com).

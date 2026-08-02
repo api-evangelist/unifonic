@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Unifonic SMS API
+  version: 1.0.0
+extends: openapi/unifonic-sms-openapi-original.json
+actions:
+  - target: $.info
+    description: Attach API Evangelist catalog metadata to the harvested spec.
+    update:
+      x-apievangelist:
+        provider: unifonic
+        harvested: '2026-07-21'
+        source: https://docs.unifonic.com/resources/AutoDocsSrc/api-documentation/SMS%20API%2011.json
+        notes: >-
+          Official Unifonic SMS (NextGen) OpenAPI, published behind the Redoc
+          renderer on docs.unifonic.com. Error semantics for the non-standard
+          4xx/5xx status codes are catalogued in errors/unifonic-problem-types.yml;
+          the AppSid/basic auth model is profiled in
+          authentication/unifonic-authentication.yml.
+  - target: $.info
+    update:
+      x-error-catalog: ../errors/unifonic-problem-types.yml
+      x-authentication-profile: ../authentication/unifonic-authentication.yml

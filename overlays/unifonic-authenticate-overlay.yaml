@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Unifonic Authenticate API
+  version: 1.0.0
+extends: openapi/unifonic-authenticate-openapi-original.json
+actions:
+  - target: $.info
+    description: Attach API Evangelist catalog metadata to the harvested spec.
+    update:
+      x-apievangelist:
+        provider: unifonic
+        harvested: '2026-07-21'
+        source: https://docs.unifonic.com/resources/AutoDocsSrc/api-documentation/Unifonic%20Authenticate11.json
+        notes: >-
+          Official Unifonic Authenticate (OTP verification) OpenAPI 3.0, v2.0.0.
+          Application-level error codes (101/107/108/109/110) are catalogued in
+          errors/unifonic-problem-types.yml.
+  - target: $.info
+    update:
+      x-error-catalog: ../errors/unifonic-problem-types.yml
+      x-authentication-profile: ../authentication/unifonic-authentication.yml

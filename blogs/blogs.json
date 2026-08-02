@@ -1,0 +1,21 @@
+{
+  "repo": "unifonic",
+  "feeds": [
+    {
+      "source": "https://www.unifonic.com/en/resources/rss.xml",
+      "feed_url": "https://www.unifonic.com/en/resources/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.unifonic.com/en/blog",
+      "feed_url": "https://www.unifonic.com/en/resources/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-08-01T15:49:00Z"
+}

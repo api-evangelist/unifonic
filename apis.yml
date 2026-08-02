@@ -1,24 +1,258 @@
 aid: unifonic
 name: Unifonic
-description: 'Unifonic is a company surfaced as a portfolio company of softbank-vision-fund and added
-  to the API Evangelist network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Unifonic is a Saudi Arabia-based customer engagement and CPaaS platform,
+  backed by SoftBank Vision Fund, that powers SMS, WhatsApp, voice, push
+  notification, and OTP-verification communication for enterprises across the
+  Middle East and beyond. Its developer surface spans an SMS (NextGen) REST
+  API, an Authenticate API for multi-channel OTP verification, Voice APIs for
+  calls, IVR, and number masking, and a WhatsApp Conversations API with
+  template, session, and management endpoints, alongside webhooks for
+  delivery status and channel events, mobile push SDKs, a web event-tracking
+  SDK, chatbot and Flow Studio automation products, and a WhatsApp sandbox
+  for testing.
 url: https://raw.githubusercontent.com/api-evangelist/unifonic/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.unifonic.com/hubfs/UNI_Logo_RGB-01.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - softbank-vision-fund
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Enterprise
-apis: []
+- CPaaS
+- Messaging
+- SMS
+- WhatsApp
+- Voice
+- Push Notifications
+- OTP
+- Customer Engagement
+- Saudi Arabia
+apis:
+- aid: unifonic:unifonic-conversations-whatsapp-api
+  name: Unifonic Conversations (WhatsApp) API
+  description: >-
+    The Unifonic Conversations API sends WhatsApp template and session messages and manages the WhatsApp
+    service: template management and Meta catalog retrieval endpoints, incoming-message and delivery-status
+    webhooks, and account-management event notifications, authenticated with a publicId and secret key
+    pair. A WhatsApp sandbox with registered test numbers supports development.
+  humanURL: https://docs.unifonic.com/articles/products-documentation/whatsapp-apis
+  baseURL: https://apis.unifonic.com
+  tags:
+  - WhatsApp
+  - Conversations
+  - Templates
+  - Webhooks
+  properties:
+  - url: https://docs.unifonic.com/articles/products-documentation/whatsapp-apis
+    type: Documentation
+  - url: https://docs.unifonic.com/articles/products-documentation/api-error-codes
+    type: ErrorCodes
+- aid: unifonic:unifonic-call-management-and-status-api
+  name: Unifonic Call Management and Status API
+  description: >-
+    The Call Management and Status API from Unifonic — 2 operation(s) for call management and status.
+  humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
+  baseURL: https://el.cloud.unifonic.com
+  tags:
+  - Call Management and Status
+  properties:
+  - type: OpenAPI
+    url: openapi/unifonic-call-management-and-status-api-openapi.yml
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/sms-api
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/unifonic-authenticate-1
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/voice
+- aid: unifonic:unifonic-call-queue-management-api
+  name: Unifonic Call Queue Management API
+  description: The Call Queue Management API from Unifonic — 2 operation(s) for call queue management.
+  humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
+  baseURL: https://el.cloud.unifonic.com
+  tags:
+  - Call Queue Management
+  properties:
+  - type: OpenAPI
+    url: openapi/unifonic-call-queue-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/sms-api
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/unifonic-authenticate-1
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/voice
+- aid: unifonic:unifonic-number-masking-api
+  name: Unifonic Number Masking API
+  description: The Number Masking API from Unifonic — 3 operation(s) for number masking.
+  humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
+  baseURL: https://el.cloud.unifonic.com
+  tags:
+  - Number Masking
+  properties:
+  - type: OpenAPI
+    url: openapi/unifonic-number-masking-api-openapi.yml
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/sms-api
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/unifonic-authenticate-1
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/voice
+- aid: unifonic:unifonic-rest-api
+  name: Unifonic Rest API
+  description: The Rest API from Unifonic — 3 operation(s) for rest.
+  humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
+  baseURL: https://el.cloud.unifonic.com
+  tags:
+  - Rest
+  properties:
+  - type: OpenAPI
+    url: openapi/unifonic-rest-api-openapi.yml
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/sms-api
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/unifonic-authenticate-1
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/voice
+- aid: unifonic:unifonic-verifications-api
+  name: Unifonic Verifications API
+  description: The Verifications API from Unifonic — 2 operation(s) for verifications.
+  humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
+  baseURL: https://el.cloud.unifonic.com
+  tags:
+  - Verifications
+  properties:
+  - type: OpenAPI
+    url: openapi/unifonic-verifications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/sms-api
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/unifonic-authenticate-1
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/voice
+- aid: unifonic:unifonic-webhooks-api
+  name: Unifonic Webhooks API
+  description: The Webhooks API from Unifonic — 1 operation(s) for webhooks.
+  humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
+  baseURL: https://el.cloud.unifonic.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/unifonic-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/sms-api
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/unifonic-authenticate-1
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/voice
+- aid: unifonic:unifonic-wrapper-api
+  name: Unifonic Wrapper API
+  description: The Wrapper API from Unifonic — 2 operation(s) for wrapper.
+  humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
+  baseURL: https://el.cloud.unifonic.com
+  tags:
+  - Wrapper
+  properties:
+  - type: OpenAPI
+    url: openapi/unifonic-wrapper-api-openapi.yml
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/sms-api
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/unifonic-authenticate-1
+  - type: Documentation
+    url: https://docs.unifonic.com/articles/api-documentation/voice
+common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/unifonic/overview
+- type: DomainSecurity
+  url: security/unifonic-domain-security.yml
+- url: https://www.unifonic.com/
+  type: Website
+- url: https://docs.unifonic.com/
+  type: DeveloperPortal
+- url: https://docs.unifonic.com/
+  type: Documentation
+- url: https://docs.unifonic.com/articles/api-documentation/overview
+  type: APIReference
+- url: https://docs.unifonic.com/articles/api-documentation/getting-started
+  type: GettingStarted
+- url: https://support.unifonic.com/support/home
+  type: Support
+- url: https://www.unifonic.com/en/blog
+  type: Blog
+- url: https://www.unifonic.com/en/pricing
+  type: Pricing
+- url: https://cloud.unifonic.com/
+  type: Login
+- url: https://www.unifonic.com/en/terms-and-conditions
+  type: TermsOfService
+- url: https://www.unifonic.com/en/privacy-policy
+  type: PrivacyPolicy
+- url: https://status.unifonic.com/
+  type: StatusPage
+- url: https://docs.unifonic.com/articles/release-notes-publication/2026-release-notes
+  type: ReleaseNotes
+- url: changelog/unifonic-changelog.yml
+  type: ChangeLog
+- url: lifecycle/unifonic-lifecycle.yml
+  type: Lifecycle
+- url: errors/unifonic-problem-types.yml
+  type: ErrorCatalog
+- url: authentication/unifonic-authentication.yml
+  type: Authentication
+- url: conventions/unifonic-conventions.yml
+  type: Conventions
+- url: conformance/unifonic-conformance.yml
+  type: Conformance
+- url: packages/unifonic-packages.yml
+  type: Packages
+- url: packages/unifonic-packages.yml
+  type: SDKs
+- url: components/unifonic-components.yml
+  type: Components
+- url: data-model/unifonic-data-model.yml
+  type: DataModel
+- url: sandbox/unifonic-sandbox.yml
+  type: Sandbox
+- url: asyncapi/unifonic-webhooks.yml
+  type: Webhooks
+- url: mcp/unifonic-mcp.yml
+  type: MCPServer
+  name: Unifonic MCP manifest (community server + candidate tools)
+- url: llms/unifonic-llms.txt
+  type: LLMsTxt
+- url: well-known/unifonic-well-known.yml
+  type: WellKnown
+- url: skills/_index.yml
+  type: AgentSkill
+  name: Unifonic Agent Skills
+- url: security/unifonic-trust-center.yml
+  type: TrustCenter
+- url: https://www.unifonic.com/en/legal/trust-centre
+  type: Compliance
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 26
+  pass: local-v1

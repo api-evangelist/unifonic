@@ -1,0 +1,72 @@
+generated: '2026-07-21'
+method: searched
+description: >-
+  Probe of the /.well-known/ discovery surface across all Unifonic hosts found
+  in apis.yml and the OpenAPI servers[] entries (www.unifonic.com,
+  docs.unifonic.com, api.unifonic.com, el.cloud.unifonic.com,
+  voice.unifonic.com, authenticate.cloud.api.unifonic.com, apis.unifonic.com,
+  cloud.unifonic.com). Unifonic publishes no well-known documents: most hosts
+  return 404; docs.unifonic.com 302-redirects every path to its login page;
+  cloud.unifonic.com is an SPA catch-all that returns its text/html app shell
+  (status 200) for any path, which is a false positive, not a document. No
+  raw files are saved because no real documents exist.
+hosts:
+  - host: https://www.unifonic.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://docs.unifonic.com
+    note: every /.well-known/ path 302-redirects to /login/?ReturnUrl=... — no documents
+    documents:
+      - {path: /.well-known/security.txt, status: 302}
+      - {path: /.well-known/openid-configuration, status: 302}
+      - {path: /.well-known/oauth-authorization-server, status: 302}
+      - {path: /.well-known/api-catalog, status: 302}
+      - {path: /.well-known/ai-plugin.json, status: 302}
+  - host: https://cloud.unifonic.com
+    note: SPA catch-all returns the text/html console shell with status 200 for any path — false positive, no real documents
+    documents:
+      - {path: /.well-known/security.txt, status: 200, content_type: text/html, false_positive: true}
+      - {path: /.well-known/openid-configuration, status: 200, content_type: text/html, false_positive: true}
+      - {path: /.well-known/oauth-authorization-server, status: 200, content_type: text/html, false_positive: true}
+      - {path: /.well-known/api-catalog, status: 200, content_type: text/html, false_positive: true}
+      - {path: /.well-known/ai-plugin.json, status: 200, content_type: text/html, false_positive: true}
+  - host: https://api.unifonic.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://el.cloud.unifonic.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://voice.unifonic.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://authenticate.cloud.api.unifonic.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://apis.unifonic.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}

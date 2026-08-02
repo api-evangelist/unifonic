@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.unifonic.com/articles/products-documentation/webhooks
+spec_type: Webhooks
+description: >-
+  Unifonic's event/webhook surface, captured from the docs. Unifonic publishes
+  no AsyncAPI document; webhooks are user-defined HTTPS callbacks configured
+  in the console (or per-request via the SMS statusCallback parameter and the
+  Voice createsWebhook operation). Unifonic makes an HTTPS POST to the
+  configured URL when events occur.
+docs:
+  - https://docs.unifonic.com/articles/products-documentation/webhooks
+  - https://docs.unifonic.com/articles/products-documentation/receiving-delivery-status-via-webhook
+  - https://docs.unifonic.com/articles/api-documentation/setting-up-a-webhook-to-receive-call-statuses
+webhooks:
+  - name: SMS delivery status (DLR)
+    trigger: Positive/Negative Delivery Receipt signals from mobile operators
+    configuration: DLR webhook configured with Unifonic; per-message statusCallback parameter on the SMS Sendmessage operation
+    docs: https://docs.unifonic.com/articles/products-documentation/receiving-delivery-status-via-webhook
+  - name: WhatsApp incoming messages
+    trigger: Inbound WhatsApp Business message received
+    configuration: Console > Channels > WhatsApp > WEBHOOK tab (multiple webhook URLs supported)
+    docs: https://docs.unifonic.com/articles/products-documentation/incoming-whatsapp-messages
+  - name: WhatsApp outbound message delivery status
+    trigger: Delivery status change of an outbound WhatsApp message
+    docs: https://docs.unifonic.com/articles/products-documentation/webhooks
+  - name: WhatsApp account management events
+    trigger: Phone-number quality change, template status change, daily limit reached
+    example_event_type: message.daily_limit_hit
+    payload_fields: [messageId, eventId, eventType, applicationId, conversationId, recipient.channel, recipient.contact, timestamp, receivedAt]
+    notes: Email alerts for Phone Number Quality Change and Template Status Change are automatic.
+    docs: https://docs.unifonic.com/articles/products-documentation/webhooks
+  - name: Voice call statuses
+    trigger: Call status changes for outbound/incoming calls
+    configuration: POST /providers/webhook (operationId createsWebhook in openapi/unifonic-voice-openapi-original.json)
+    docs: https://docs.unifonic.com/articles/api-documentation/setting-up-a-webhook-to-receive-call-statuses
+  - name: External bot inbound messages
+    trigger: Inbound messages routed to an external chatbot
+    configuration: POST {{baseURL}}/externalBots/v1/bots with webhook URL
+    docs: https://docs.unifonic.com/articles/products-documentation/api-endpoints

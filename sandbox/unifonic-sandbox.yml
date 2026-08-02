@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.unifonic.com/articles/products-documentation/conv-sandbox
+docs:
+  - https://docs.unifonic.com/articles/products-documentation/conv-sandbox
+  - https://docs.unifonic.com/articles/products-documentation/api-error-codes
+description: >-
+  Unifonic's published testing surface: the WhatsApp Sandbox, a free
+  pre-configured WhatsApp number for exercising the Unifonic Conversation
+  APIs, chatbot, and campaign tooling without a production WhatsApp Business
+  number. Activated from the console (Channels > WhatsApp), it allows up to 10
+  registered testing phone numbers and webhook URLs for delivery reports and
+  incoming messages. Sandbox usage is quota-limited. Captured verbatim from
+  the docs; Unifonic publishes no magic test values for the SMS or Voice APIs.
+products:
+  - name: WhatsApp Sandbox
+    endpoint: https://apis.unifonic.com/v1/messages
+    activation: Console > Channels > WhatsApp > Activate WhatsApp Sandbox
+    test_numbers: up to 10 registered testing phone numbers
+    webhooks: configurable webhook URLs for delivery reports and incoming messages
+    templates:
+      - sandbox_account_update
+      - sandbox_appointment_update
+      - sandbox_reservation_update
+      - sandbox_shipping_update
+      - sandbox_ticket_update
+    limits:
+      - 'Sending to a number not in the 10 testing numbers returns 400: "Phone number {phone_number} does not exists in the list of testing phone numbers"'
+      - 'Exhausting the sandbox quota returns 402: "You have consumed the allocated Sandbox usage , Please contact Unifonic team"'
+notes:
+  - No test-vs-live key prefixes are documented; sandbox scoping is by channel activation and registered test numbers.
+  - No published magic numbers or test credentials for the SMS NextGen or Voice APIs were found in the docs.

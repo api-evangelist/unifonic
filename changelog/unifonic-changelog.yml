@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.unifonic.com/articles/release-notes-publication/2026-release-notes
+description: >-
+  Structured capture of Unifonic's dated release notes, published on
+  docs.unifonic.com under the Release Notes publication. Unifonic communicates
+  platform and API changes through monthly (previously quarterly) release-notes
+  pages per year going back to 2022. API versions are carried in URL paths
+  (e.g. /services/api/v2/verifications on the Authenticate API, /v1 on the
+  Voice API, /rest on the SMS NextGen API); there is no global dated API
+  version or version-pinning header. The live release-notes pages are the
+  source of truth; recent window captured below.
+docs: https://docs.unifonic.com/articles/release-notes-publication/2026-release-notes
+versioning:
+  scheme: per-product URL-path versioning + monthly dated release notes
+  examples:
+    - https://authenticate.cloud.api.unifonic.com/services/api/v2/verifications/start (Authenticate v2)
+    - https://voice.unifonic.com/v1/calls (Voice v1.2.0 per OpenAPI info.version)
+    - https://el.cloud.unifonic.com/rest/SMS/messages (SMS NextGen REST)
+history_index:
+  - {year: 2026, url: 'https://docs.unifonic.com/articles/release-notes-publication/2026-release-notes'}
+  - {year: 2025, url: 'https://docs.unifonic.com/articles/release-notes-publication/2025-release-notes'}
+  - {year: 2024, url: 'https://docs.unifonic.com/articles/release-notes-publication/2024-release-notes'}
+  - {year: 2023, url: 'https://docs.unifonic.com/articles/release-notes-publication/2023-release-notes'}
+  - {year: 2022, url: 'https://docs.unifonic.com/articles/release-notes-publication/2022-release-notes'}
+entries:
+  - date: '2026-05'
+    url: https://docs.unifonic.com/articles/release-notes-publication/may-2026-release-notes
+    breaking: false
+    highlights:
+      - 'Group API (MVP): first version of the Group API with core lifecycle operations — create, update, and delete groups programmatically'
+      - ZeroTap authentication templates for WhatsApp authentication flows without prior interaction
+      - Self-serve blocking of phone numbers in Unifonic Conversations
+      - Flow Studio "Wait for Client Event" widget; WhatsApp BSUID support; Web SDK onboarding
+      - Enhanced OCI observability and chatbot analytics in Customer Insights
+  - date: '2026-04'
+    url: https://docs.unifonic.com/articles/release-notes-publication/april-2026-release-notes
+    breaking: false
+    highlights:
+      - Website-based Knowledge Base ingestion for Conversation AI (crawl a URL into the chatbot KB)
+      - Persona AI dynamic conversational context variables
+      - WhatsApp username (Meta BSUID) support in Conversation AI
+      - Agent Console reporting enhancements (Overview + Agent Performance tabs, enhanced chat exports)
+      - Webchat performance and monitoring/alerting improvements
+  - date: '2026-03'
+    url: https://docs.unifonic.com/articles/release-notes-publication/march-2026-release-notes
+    breaking: false
+    highlights:
+      - Bulk upload for chatbot Knowledge Base documents (up to 20 PDFs, 15 MB each)
+      - AI Persona supports button and list selections (label + underlying value)
+      - Channel-specific AI response formatting (WhatsApp, Webchat)

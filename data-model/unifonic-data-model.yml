@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/unifonic-sms-openapi-original.json + openapi/unifonic-authenticate-openapi-original.json + openapi/unifonic-voice-openapi-original.json
+description: >-
+  Entity-relationship view of Unifonic's published API surface, derived from
+  the request/response schemas and path parameters of the three official
+  OpenAPI documents. The published specs are operation-centric with modest
+  schema reuse, so the graph below is the id-reference structure the
+  operations imply rather than a provider-published object reference.
+entities:
+  - name: App
+    id_field: AppSid
+    description: The application credential every request is scoped to (AppSid query param on SMS; x-authenticate-app-id header on Authenticate; AppsId on Voice).
+  - name: Message
+    id_field: MessageID
+    source: openapi/unifonic-sms-openapi-original.json
+    description: An SMS message (Sendmessage / GetMessageDetails); carries SenderID, Recipient, Body, CorrelationID, delivery status.
+  - name: ScheduledMessage
+    id_field: MessageID
+    source: openapi/unifonic-sms-openapi-original.json
+    description: A message scheduled for future delivery (TimeScheduled); can be listed and stopped.
+  - name: Verification
+    id_field: id
+    source: openapi/unifonic-authenticate-openapi-original.json
+    description: An OTP verification (uuid id, to, channel, locale, length, code_type, response_status, error_code).
+  - name: Call
+    id_field: callId
+    source: openapi/unifonic-voice-openapi-original.json
+    description: An outbound voice call (CreateCall); status retrievable via /providers/voice-call-log/{callId}.
+  - name: MaskingSession
+    id_field: maskId
+    source: openapi/unifonic-voice-openapi-original.json
+    description: A one-way or two-way number-masking session between two parties.
+  - name: Queue
+    id_field: queueName
+    source: openapi/unifonic-voice-openapi-original.json
+    description: A FIFO call queue (getSpecificQueue / dequeueFIFO).
+  - name: Webhook
+    source: openapi/unifonic-voice-openapi-original.json
+    description: A registered callback for call statuses (createsWebhook); SMS delivery statuses use the statusCallback parameter instead.
+relationships:
+  - {from: Message, to: App, type: belongs_to, via: AppSid}
+  - {from: ScheduledMessage, to: App, type: belongs_to, via: AppSid}
+  - {from: Verification, to: App, type: belongs_to, via: x-authenticate-app-id}
+  - {from: Call, to: App, type: belongs_to, via: AppsId}
+  - {from: MaskingSession, to: App, type: belongs_to, via: AppsId}
+  - {from: App, to: Message, type: has_many, via: MessageID}
+  - {from: App, to: ScheduledMessage, type: has_many, via: MessageID}
+  - {from: App, to: Verification, type: has_many, via: id}
+  - {from: App, to: Call, type: has_many, via: callId}
+  - {from: App, to: MaskingSession, type: has_many, via: maskId}
+  - {from: Queue, to: Call, type: has_many, via: queueName}

@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/ (three official specs) + docs.unifonic.com API documentation
+description: >-
+  Industry and cross-cutting standards posture for Unifonic's public APIs,
+  derived from the published OpenAPI documents and the API documentation.
+  Compliance-program certifications (if published) are tracked separately in
+  security/unifonic-trust-center.yml when verified.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securitySchemes in any published spec; auth is AppSid/basic/apiKey headers.
+  - id: oidc
+    conforms: false
+    evidence: No openIdConnect scheme; no /.well-known/openid-configuration surface documented.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use a custom {success, message, errorCode, data} envelope and an
+      extended HTTP-style status-code vocabulary (see
+      errors/unifonic-problem-types.yml), not application/problem+json.
+  - id: json:api
+    conforms: false
+    evidence: Response schemas are ad-hoc JSON objects, not JSON:API documents.
+  - id: pagination
+    conforms: partial
+    evidence: Limit + dateFrom/dateTo window filtering on message queries; no cursor or standard pagination contract.
+  - id: idempotency
+    conforms: partial
+    evidence: >-
+      CorrelationID parameter with duplicate detection (status 409 "This
+      message is duplicate"), but no documented Idempotency-Key contract.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset/Deprecation header support documented.
+  - id: e164
+    conforms: partial
+    evidence: >-
+      Authenticate API uses +E.164 examples (+966512345678); the SMS API
+      requires international format without 00 or + (966XXXXXXXXX).
+  - id: scim
+    conforms: false
+    evidence: No SCIM surface published.
+  - id: fapi
+    conforms: false
+    evidence: Not a financial-grade API; no FAPI claims found.

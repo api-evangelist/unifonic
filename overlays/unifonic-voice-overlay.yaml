@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Unifonic Voice APIs
+  version: 1.0.0
+extends: openapi/unifonic-voice-openapi-original.json
+actions:
+  - target: $.info
+    description: Attach API Evangelist catalog metadata to the harvested spec.
+    update:
+      x-apievangelist:
+        provider: unifonic
+        harvested: '2026-07-21'
+        source: https://docs.unifonic.com/resources/AutoDocsSrc/api-documentation/Unifonic%20Voice%20APIs11.json
+        notes: >-
+          Official Unifonic Voice APIs OpenAPI 3.0, v1.2.0 — calls, number
+          masking, queues, and call-status webhooks. The spec declares no
+          securitySchemes; the docs-published AppsId custom auth model is
+          profiled in authentication/unifonic-authentication.yml.
+  - target: $.info
+    update:
+      x-error-catalog: ../errors/unifonic-problem-types.yml
+      x-authentication-profile: ../authentication/unifonic-authentication.yml

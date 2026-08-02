@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.unifonic.com/articles/products-documentation/unifonic-web-sdk
+description: >-
+  Client-side / embeddable surfaces Unifonic ships beyond its server-side
+  APIs: the Web SDK event tracker (a GTM-style dataLayer listener script), the
+  Webchat web widget, mobile push-notification SDKs for iOS, Android, React
+  Native, and Flutter (Unifonic Notice / Push), and the chatbot builder's
+  widget library. Captured from the product docs.
+families:
+  - name: Web SDK (event tracker)
+    kind: script-tag
+    loader: https://web-tracker.prod.oci.jed.cloud.unifonic.com/unifonic-tracker.min.js
+    integration: >-
+      <script src=".../unifonic-tracker.min.js" data-ut-channel-key="YOUR_CHANNEL_KEY"></script>
+      placed in <head>; listens to window.dataLayer pushes (GTM-compatible),
+      enriches events with page URL/timestamp/user agent/device type;
+      window.UnifonicTracker.setUserId() associates events with a user.
+    docs: https://docs.unifonic.com/articles/products-documentation/unifonic-web-sdk
+  - name: Web Widget (webchat)
+    kind: embeddable-widget
+    docs: https://docs.unifonic.com/articles/products-documentation/web-widget-getting-started
+    note: Embeddable webchat widget for Unifonic Conversations; setup pages under web-widget-* in the product docs.
+  - name: Push SDKs (Unifonic Notice)
+    kind: mobile-sdk
+    platforms:
+      - {platform: ios, docs: 'https://docs.unifonic.com/articles/products-documentation/notice-ios-sdk', api: 'register / saveToken / markNotification / disableNotification'}
+      - {platform: android, docs: 'https://docs.unifonic.com/articles/products-documentation/notice-ios-sdk', note: FCM-based; register/bindings APIs}
+      - {platform: react-native, docs: 'https://docs.unifonic.com/articles/products-documentation/react-native-push-library', package: react-native-unifonic-push (npm)}
+      - {platform: flutter, docs: 'https://docs.unifonic.com/articles/products-documentation/flutter-push-library', package: unifonic_push_sdk (distributed as a local-path dependency, not on pub.dev)}
+  - name: Chatbot widget library
+    kind: builder-widgets
+    docs: https://docs.unifonic.com/articles/products-documentation/bot-widget-library
+    groups:
+      - 'Functional: Send message, Quick reply buttons, List messages, Send an email, Location'
+      - 'Flow control: Collect input, Options, Branch, Delay, Hot keywords, Chat transcript, End, CSAT, Subflow, Handover'
+      - 'Integration: Service Call, DialogFlow, Human Handover, JavaScript, Webhook'

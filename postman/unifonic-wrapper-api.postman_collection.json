@@ -1,0 +1,774 @@
+{
+  "info": {
+    "_postman_id": "c95dacb4-9b32-4044-9d7f-c6a1b383f9c4",
+    "name": "Unifonic Authenticate Call Management and Status Wrapper API",
+    "description": "Handles verifications with OTP to multiple channels\n\nContact Support:\n Name: Unifonic Support\n Email: support@unifonic.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:41.000Z",
+    "updatedAt": "2026-07-28T03:22:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c95dacb4-9b32-4044-9d7f-c6a1b383f9c4"
+  },
+  "item": [
+    {
+      "name": "wrapper",
+      "item": [
+        {
+          "name": "msgQuery",
+          "item": [
+            {
+              "name": "Get msgQuery",
+              "id": "af33cbf1-8a18-4d2e-ba63-5b389b45707d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wrapper/msgQuery?appsid=<string>&msgid=<long>&to=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wrapper",
+                    "msgQuery"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) A character string that uniquely identifies your app",
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) A unique ID that identifies a message",
+                      "key": "msgid",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ]
+                },
+                "description": "Unifonic Get message query API allows you to get details of specified message."
+              },
+              "response": [
+                {
+                  "id": "feb94e25-3f82-4a9c-b93c-e7345af7c57c",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/msgQuery?appsid=<string>&msgid=<long>&to=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "msgQuery"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) A unique ID that identifies a message",
+                          "key": "msgid",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"STATUS05\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-feb94e25-3f82-4a9c-b93c-e7345af7c57c"
+                },
+                {
+                  "id": "49bbc3b9-190b-40eb-b355-8185f3566497",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/msgQuery?appsid=<string>&msgid=<long>&to=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "msgQuery"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) A unique ID that identifies a message",
+                          "key": "msgid",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-49bbc3b9-190b-40eb-b355-8185f3566497"
+                },
+                {
+                  "id": "8425b3be-e5d4-4c50-88f1-b2710b024480",
+                  "name": "Missing parameter AppSid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/msgQuery?appsid=<string>&msgid=<long>&to=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "msgQuery"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) A unique ID that identifies a message",
+                          "key": "msgid",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Payment Required",
+                  "code": 402,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-8425b3be-e5d4-4c50-88f1-b2710b024480"
+                },
+                {
+                  "id": "ad3c2d2f-ddac-47f0-bc07-d9b11b9183b0",
+                  "name": "MessageId must be numeric",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/msgQuery?appsid=<string>&msgid=<long>&to=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "msgQuery"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) A unique ID that identifies a message",
+                          "key": "msgid",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-ad3c2d2f-ddac-47f0-bc07-d9b11b9183b0"
+                },
+                {
+                  "id": "e3f40b02-5bd2-4535-b86f-8c1fa893102c",
+                  "name": "User must specify either messageId or recipient parameter",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/msgQuery?appsid=<string>&msgid=<long>&to=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "msgQuery"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) A unique ID that identifies a message",
+                          "key": "msgid",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-e3f40b02-5bd2-4535-b86f-8c1fa893102c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:22:42.000Z",
+              "updatedAt": "2026-07-28T03:22:42.000Z",
+              "uid": "35240-af33cbf1-8a18-4d2e-ba63-5b389b45707d"
+            }
+          ],
+          "id": "9d9aa2d3-14c0-4f01-a391-f75c998553fd",
+          "createdAt": "2026-07-28T03:22:42.000Z",
+          "updatedAt": "2026-07-28T03:22:42.000Z",
+          "uid": "35240-9d9aa2d3-14c0-4f01-a391-f75c998553fd"
+        },
+        {
+          "name": "sendSMS.php",
+          "item": [
+            {
+              "name": "Send message",
+              "id": "faab9dc0-0fdd-4fad-b6ff-a697a9739c45",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wrapper/sendSMS.php?appsid=<string>&msg=<string>&to=<long>&sender=<string>&baseEncode=false&encoding=UCS2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wrapper",
+                    "sendSMS.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) A character string that uniquely identifies your app",
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Message body supports both English and unicodes characters, concatenated messages is supported",
+                      "key": "msg",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) The SenderID to send from, App default SenderID is used unless else stated",
+                      "key": "sender",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format",
+                      "key": "baseEncode",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Converts information from a source into symbols for communication or storage, GSM7 for English and UCS2 for Arabic",
+                      "key": "encoding",
+                      "value": "UCS2"
+                    }
+                  ]
+                },
+                "description": "Unifonic Send Wrapper API allows you to send  text messages to  multiple users at the same time"
+              },
+              "response": [
+                {
+                  "id": "da732a60-1ffa-4de7-b3fa-99242ebfe28d",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/sendSMS.php?appsid=<string>&msg=<string>&to=<long>&sender=<string>&baseEncode=false&encoding=UCS2",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "sendSMS.php"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Message body supports both English and unicodes characters, concatenated messages is supported",
+                          "key": "msg",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) The SenderID to send from, App default SenderID is used unless else stated",
+                          "key": "sender",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format",
+                          "key": "baseEncode",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Converts information from a source into symbols for communication or storage, GSM7 for English and UCS2 for Arabic",
+                          "key": "encoding",
+                          "value": "UCS2"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Error\": \"<string>\",\n  \"MessageID\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-da732a60-1ffa-4de7-b3fa-99242ebfe28d"
+                },
+                {
+                  "id": "1288a1b0-140e-4491-ac91-b0d9a6ba8773",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/sendSMS.php?appsid=<string>&msg=<string>&to=<long>&sender=<string>&baseEncode=false&encoding=UCS2",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "sendSMS.php"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Message body supports both English and unicodes characters, concatenated messages is supported",
+                          "key": "msg",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) The SenderID to send from, App default SenderID is used unless else stated",
+                          "key": "sender",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format",
+                          "key": "baseEncode",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Converts information from a source into symbols for communication or storage, GSM7 for English and UCS2 for Arabic",
+                          "key": "encoding",
+                          "value": "UCS2"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-1288a1b0-140e-4491-ac91-b0d9a6ba8773"
+                },
+                {
+                  "id": "a4f66150-c64f-44f6-8259-338e735383b2",
+                  "name": "Missing parameter AppSid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/sendSMS.php?appsid=<string>&msg=<string>&to=<long>&sender=<string>&baseEncode=false&encoding=UCS2",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "sendSMS.php"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Message body supports both English and unicodes characters, concatenated messages is supported",
+                          "key": "msg",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) The SenderID to send from, App default SenderID is used unless else stated",
+                          "key": "sender",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format",
+                          "key": "baseEncode",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Converts information from a source into symbols for communication or storage, GSM7 for English and UCS2 for Arabic",
+                          "key": "encoding",
+                          "value": "UCS2"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Payment Required",
+                  "code": 402,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-a4f66150-c64f-44f6-8259-338e735383b2"
+                },
+                {
+                  "id": "3bcc95cc-f7ae-4c7e-8f41-8d8578047ca7",
+                  "name": "Authentication parameters are incorrectly base64 encoded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-authenticate-app-id",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wrapper/sendSMS.php?appsid=<string>&msg=<string>&to=<long>&sender=<string>&baseEncode=false&encoding=UCS2",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wrapper",
+                        "sendSMS.php"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A character string that uniquely identifies your app",
+                          "key": "appsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Message body supports both English and unicodes characters, concatenated messages is supported",
+                          "key": "msg",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)",
+                          "key": "to",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) The SenderID to send from, App default SenderID is used unless else stated",
+                          "key": "sender",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format",
+                          "key": "baseEncode",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Converts information from a source into symbols for communication or storage, GSM7 for English and UCS2 for Arabic",
+                          "key": "encoding",
+                          "value": "UCS2"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:22:42.000Z",
+                  "updatedAt": "2026-07-28T03:22:42.000Z",
+                  "uid": "35240-3bcc95cc-f7ae-4c7e-8f41-8d8578047ca7"
+                }
+              ],
+              "createdAt": "2026-07-28T03:22:42.000Z",
+              "updatedAt": "2026-07-28T03:22:42.000Z",
+              "uid": "35240-faab9dc0-0fdd-4fad-b6ff-a697a9739c45"
+            }
+          ],
+          "id": "afa3a48a-1eec-4f46-abd9-b2938d755dfa",
+          "createdAt": "2026-07-28T03:22:42.000Z",
+          "updatedAt": "2026-07-28T03:22:42.000Z",
+          "uid": "35240-afa3a48a-1eec-4f46-abd9-b2938d755dfa"
+        }
+      ],
+      "id": "f85e9aa1-6f26-4aba-ae58-1c7501aa08d8",
+      "createdAt": "2026-07-28T03:22:42.000Z",
+      "updatedAt": "2026-07-28T03:22:42.000Z",
+      "uid": "35240-f85e9aa1-6f26-4aba-ae58-1c7501aa08d8"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-authenticate-app-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://authenticate.cloud.api.unifonic.com"
+    }
+  ]
+}

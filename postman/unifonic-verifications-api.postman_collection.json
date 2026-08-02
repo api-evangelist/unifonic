@@ -1,0 +1,507 @@
+{
+  "info": {
+    "_postman_id": "d75e4090-d765-497f-b62e-f7a134451332",
+    "name": "Unifonic Authenticate Call Management and Status Verifications API",
+    "description": "Handles verifications with OTP to multiple channels\n\nContact Support:\n Name: Unifonic Support\n Email: support@unifonic.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:37.000Z",
+    "updatedAt": "2026-07-28T03:22:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d75e4090-d765-497f-b62e-f7a134451332"
+  },
+  "item": [
+    {
+      "name": "services",
+      "item": [
+        {
+          "name": "api",
+          "item": [
+            {
+              "name": "v2",
+              "item": [
+                {
+                  "name": "verifications",
+                  "item": [
+                    {
+                      "name": "check",
+                      "item": [
+                        {
+                          "name": "Check Verification",
+                          "id": "e724c8ec-acf3-4f43-a67c-583858f4dc40",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) Address of receiver",
+                                  "key": "to",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) Channel you want to send. Possible values are `sms`, `whatsapp` & `voice`.",
+                                  "key": "channel",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The code which user has entered",
+                                  "key": "code",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/services/api/v2/verifications/check",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "services",
+                                "api",
+                                "v2",
+                                "verifications",
+                                "check"
+                              ]
+                            },
+                            "description": "This API is used for verification of the OTP. In case any error, error_code will be passed alongwith  the response_status in response.\n- 101 for Correct\n- 107 for Incorrect\n- 108 for Attempts Exceeded\n- 109 for Code Expired\n- 110 for Already Verified"
+                          },
+                          "response": [
+                            {
+                              "id": "09ce4184-fedc-4c2a-8041-79bcb9eda2f2",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-authenticate-app-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) Address of receiver",
+                                      "key": "to",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "(Required) Channel you want to send. Possible values are `sms`, `whatsapp` & `voice`.",
+                                      "key": "channel",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "(Required) The code which user has entered",
+                                      "key": "code",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/services/api/v2/verifications/check",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "services",
+                                    "api",
+                                    "v2",
+                                    "verifications",
+                                    "check"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"to\": \"<string>\",\n  \"channel\": \"<string>\",\n  \"id\": \"953c0c21-ef8f-4efe-8482-090d5b967ea0\",\n  \"response_status\": \"correct\",\n  \"length\": \"<integer>\",\n  \"locale\": \"<string>\",\n  \"code_type\": \"<string>\",\n  \"error_code\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T03:22:38.000Z",
+                              "updatedAt": "2026-07-28T03:22:38.000Z",
+                              "uid": "35240-09ce4184-fedc-4c2a-8041-79bcb9eda2f2"
+                            },
+                            {
+                              "id": "953b43e7-c2e4-4a90-8eb8-175683dc152d",
+                              "name": "bad input parameter",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-authenticate-app-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) Address of receiver",
+                                      "key": "to",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "(Required) Channel you want to send. Possible values are `sms`, `whatsapp` & `voice`.",
+                                      "key": "channel",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "(Required) The code which user has entered",
+                                      "key": "code",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/services/api/v2/verifications/check",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "services",
+                                    "api",
+                                    "v2",
+                                    "verifications",
+                                    "check"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T03:22:38.000Z",
+                              "updatedAt": "2026-07-28T03:22:38.000Z",
+                              "uid": "35240-953b43e7-c2e4-4a90-8eb8-175683dc152d"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:22:38.000Z",
+                          "updatedAt": "2026-07-28T03:22:38.000Z",
+                          "uid": "35240-e724c8ec-acf3-4f43-a67c-583858f4dc40"
+                        }
+                      ],
+                      "id": "2094e20e-da7a-44f0-8de4-923f34f8cd70",
+                      "createdAt": "2026-07-28T03:22:38.000Z",
+                      "updatedAt": "2026-07-28T03:22:38.000Z",
+                      "uid": "35240-2094e20e-da7a-44f0-8de4-923f34f8cd70"
+                    },
+                    {
+                      "name": "start",
+                      "item": [
+                        {
+                          "name": "Create Verification",
+                          "id": "9615f63d-4ee1-4835-8889-7666e0478c0d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) Address of receiver",
+                                  "key": "to",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Channel you want to use for sending verification code. Currently there are three channels  `SMS`, `Voice` & `WhatsApp`. Their priorities can be defined in Unifonic Authenticate configuration panel. By default it will send verification through all of configured channels. If channel is not defined the verification code will be sent on the basis of priority defined for each channel.",
+                                  "key": "channel",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "In what language you want to send",
+                                  "key": "locale",
+                                  "value": "en"
+                                },
+                                {
+                                  "description": "Length of verification code",
+                                  "key": "length",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/services/api/v2/verifications/start",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "services",
+                                "api",
+                                "v2",
+                                "verifications",
+                                "start"
+                              ]
+                            },
+                            "description": "This endpoint sends a verification code through any of channels mainly `Sms`, `Voice` & `Whatsapp`. By default it sends messages to all configured channels in the Authenticate app."
+                          },
+                          "response": [
+                            {
+                              "id": "aa090708-e4cf-4e48-831e-6f47c95adf13",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-authenticate-app-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) Address of receiver",
+                                      "key": "to",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Channel you want to use for sending verification code. Currently there are three channels  `SMS`, `Voice` & `WhatsApp`. Their priorities can be defined in Unifonic Authenticate configuration panel. By default it will send verification through all of configured channels. If channel is not defined the verification code will be sent on the basis of priority defined for each channel.",
+                                      "key": "channel",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "In what language you want to send",
+                                      "key": "locale",
+                                      "value": "en"
+                                    },
+                                    {
+                                      "description": "Length of verification code",
+                                      "key": "length",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/services/api/v2/verifications/start",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "services",
+                                    "api",
+                                    "v2",
+                                    "verifications",
+                                    "start"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"to\": \"<string>\",\n  \"channel\": \"<string>\",\n  \"id\": \"953c0c21-ef8f-4efe-8482-090d5b967ea0\",\n  \"response_status\": \"correct\",\n  \"length\": \"<integer>\",\n  \"locale\": \"<string>\",\n  \"code_type\": \"<string>\",\n  \"error_code\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T03:22:38.000Z",
+                              "updatedAt": "2026-07-28T03:22:38.000Z",
+                              "uid": "35240-aa090708-e4cf-4e48-831e-6f47c95adf13"
+                            },
+                            {
+                              "id": "950c95ba-3946-4f57-946f-872998889cf0",
+                              "name": "bad input parameter",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-authenticate-app-id",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) Address of receiver",
+                                      "key": "to",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Channel you want to use for sending verification code. Currently there are three channels  `SMS`, `Voice` & `WhatsApp`. Their priorities can be defined in Unifonic Authenticate configuration panel. By default it will send verification through all of configured channels. If channel is not defined the verification code will be sent on the basis of priority defined for each channel.",
+                                      "key": "channel",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "In what language you want to send",
+                                      "key": "locale",
+                                      "value": "en"
+                                    },
+                                    {
+                                      "description": "Length of verification code",
+                                      "key": "length",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/services/api/v2/verifications/start",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "services",
+                                    "api",
+                                    "v2",
+                                    "verifications",
+                                    "start"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T03:22:38.000Z",
+                              "updatedAt": "2026-07-28T03:22:38.000Z",
+                              "uid": "35240-950c95ba-3946-4f57-946f-872998889cf0"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:22:38.000Z",
+                          "updatedAt": "2026-07-28T03:22:38.000Z",
+                          "uid": "35240-9615f63d-4ee1-4835-8889-7666e0478c0d"
+                        }
+                      ],
+                      "id": "219e7313-9b3c-482e-9e58-3065e04697fa",
+                      "createdAt": "2026-07-28T03:22:38.000Z",
+                      "updatedAt": "2026-07-28T03:22:38.000Z",
+                      "uid": "35240-219e7313-9b3c-482e-9e58-3065e04697fa"
+                    }
+                  ],
+                  "id": "d1263fb2-a9ce-45a9-8da0-6c278ce2b936",
+                  "createdAt": "2026-07-28T03:22:38.000Z",
+                  "updatedAt": "2026-07-28T03:22:38.000Z",
+                  "uid": "35240-d1263fb2-a9ce-45a9-8da0-6c278ce2b936"
+                }
+              ],
+              "id": "f10cf64f-4390-4130-b1f0-c9e486923262",
+              "createdAt": "2026-07-28T03:22:38.000Z",
+              "updatedAt": "2026-07-28T03:22:38.000Z",
+              "uid": "35240-f10cf64f-4390-4130-b1f0-c9e486923262"
+            }
+          ],
+          "id": "b84f0ea8-ea14-4b82-b987-231da431aad7",
+          "createdAt": "2026-07-28T03:22:38.000Z",
+          "updatedAt": "2026-07-28T03:22:38.000Z",
+          "uid": "35240-b84f0ea8-ea14-4b82-b987-231da431aad7"
+        }
+      ],
+      "id": "907fb607-7519-46f0-971e-a13e9cdf0207",
+      "createdAt": "2026-07-28T03:22:38.000Z",
+      "updatedAt": "2026-07-28T03:22:38.000Z",
+      "uid": "35240-907fb607-7519-46f0-971e-a13e9cdf0207"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-authenticate-app-id",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://authenticate.cloud.api.unifonic.com"
+    }
+  ]
+}

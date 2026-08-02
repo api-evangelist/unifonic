@@ -1,0 +1,129 @@
+generated: '2026-07-21'
+method: searched
+source: npm / PyPI / Packagist / RubyGems / NuGet registry searches, 2026-07-21
+description: >-
+  Client libraries for the Unifonic APIs found across the public package
+  registries and the product docs. Unifonic maintains no official registry
+  organization and no official GitHub organization (github.com/unifonic
+  returns 404), but its docs distribute first-party mobile push SDKs — the
+  React Native push library is installed from npm as react-native-unifonic-push
+  per docs.unifonic.com, and iOS/Android/Flutter push SDKs are documented as
+  provider-supplied. The server-side API ecosystem is otherwise
+  community-maintained wrappers, including a Symfony Notifier bridge
+  maintained by the Symfony project (third-party relative to Unifonic). PyPI,
+  Maven Central, and crates.io have no unifonic packages.
+first_party_found: true
+packages:
+  - language: javascript (react-native)
+    registry: npm
+    name: react-native-unifonic-push
+    url: https://www.npmjs.com/package/react-native-unifonic-push
+    install: npm install react-native-unifonic-push
+    official: true
+    note: >-
+      First-party Unifonic Notice push SDK — the install documented at
+      docs.unifonic.com/articles/products-documentation/react-native-push-library
+      (published on npm under an individual maintainer account, not a company org).
+  - language: dart (flutter)
+    registry: docs
+    name: unifonic_push_sdk
+    url: https://docs.unifonic.com/articles/products-documentation/flutter-push-library
+    install: 'pubspec.yaml dependency (distributed as a local-path SDK, not on pub.dev)'
+    official: true
+  - language: swift (ios) / kotlin (android)
+    registry: docs
+    name: Unifonic Notice Push SDK
+    url: https://docs.unifonic.com/articles/products-documentation/notice-ios-sdk
+    install: provided by Unifonic (register/saveToken/markNotification APIs)
+    official: true
+  - language: javascript (browser)
+    registry: cdn
+    name: unifonic-tracker (Web SDK)
+    url: https://docs.unifonic.com/articles/products-documentation/unifonic-web-sdk
+    install: '<script src="https://web-tracker.prod.oci.jed.cloud.unifonic.com/unifonic-tracker.min.js" data-ut-channel-key="...">'
+    official: true
+  - language: php
+    registry: packagist
+    name: symfony/unifonic-notifier
+    url: https://packagist.org/packages/symfony/unifonic-notifier
+    install: composer require symfony/unifonic-notifier
+    official: false
+    note: Symfony Notifier bridge for Unifonic, maintained by the Symfony project.
+  - language: php
+    registry: packagist
+    name: multicaret/laravel-unifonic
+    url: https://packagist.org/packages/multicaret/laravel-unifonic
+    install: composer require multicaret/laravel-unifonic
+    official: false
+  - language: php
+    registry: packagist
+    name: ahmedhat/unifonicnextgen
+    url: https://packagist.org/packages/ahmedhat/unifonicnextgen
+    install: composer require ahmedhat/unifonicnextgen
+    official: false
+    note: Generated from the Unifonic NextGen SMS API description.
+  - language: php
+    registry: packagist
+    name: ahmedhat/unifonic-authenticate
+    url: https://packagist.org/packages/ahmedhat/unifonic-authenticate
+    install: composer require ahmedhat/unifonic-authenticate
+    official: false
+    note: Wrapper for the Unifonic Authenticate OTP API.
+  - language: javascript
+    registry: npm
+    name: nestjs-unifonic
+    url: https://www.npmjs.com/package/nestjs-unifonic
+    install: npm install nestjs-unifonic
+    official: false
+  - language: javascript
+    registry: npm
+    name: unifonic-next-gen-lib
+    url: https://www.npmjs.com/package/unifonic-next-gen-lib
+    install: npm install unifonic-next-gen-lib
+    official: false
+  - language: javascript
+    registry: npm
+    name: unifonic-provider
+    url: https://www.npmjs.com/package/unifonic-provider
+    install: npm install unifonic-provider
+    official: false
+    note: Unifonic SMS provider for the Novu notification framework.
+  - language: ruby
+    registry: rubygems
+    name: unifonic_sms
+    url: https://rubygems.org/gems/unifonic_sms
+    install: gem install unifonic_sms
+    official: false
+  - language: ruby
+    registry: rubygems
+    name: hs_unifonic
+    url: https://rubygems.org/gems/hs_unifonic
+    install: gem install hs_unifonic
+    official: false
+  - language: csharp
+    registry: nuget
+    name: Unifonic
+    url: https://www.nuget.org/packages/Unifonic
+    install: dotnet add package Unifonic
+    official: false
+  - language: csharp
+    registry: nuget
+    name: Unifonic.SMS.NetCore
+    url: https://www.nuget.org/packages/Unifonic.SMS.NetCore
+    install: dotnet add package Unifonic.SMS.NetCore
+    official: false
+  - language: csharp
+    registry: nuget
+    name: Unifonic.NetCore
+    url: https://www.nuget.org/packages/Unifonic.NetCore
+    install: dotnet add package Unifonic.NetCore
+    official: false
+registries_probed:
+  npm: first-party push SDK (react-native-unifonic-push) + community packages
+  pypi: none (404 for unifonic, unifonic-sms, unifonic-client)
+  packagist: community packages + Symfony bridge
+  rubygems: community gems only
+  nuget: community packages only
+  crates_io: none (search returned 0)
+  maven_central: none (search returned 0)
+  pkg_go_dev: no first-party module found

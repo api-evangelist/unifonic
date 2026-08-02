@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://status.unifonic.com/ + https://docs.unifonic.com/articles/release-notes-publication/2026-release-notes
+description: >-
+  Lifecycle posture of the Unifonic platform. Unifonic runs a public
+  Freshstatus-powered status page with real-time status, uptime, and incident
+  history, and communicates change through monthly dated release notes on
+  docs.unifonic.com. Versioning is per-product URL-path (Authenticate v2,
+  Voice v1, SMS NextGen /rest). No published deprecation policy, Sunset/
+  Deprecation header support (RFC 8594), or SLA page was found, and no
+  operation in the three official OpenAPI documents is marked deprecated
+  (all declare "deprecated": false).
+versioning:
+  scheme: uri-path
+  current:
+    - {api: Authenticate, version: v2, base: 'https://authenticate.cloud.api.unifonic.com/services/api/v2'}
+    - {api: Voice, version: v1 (info.version 1.2.0), base: 'https://voice.unifonic.com/v1'}
+    - {api: SMS NextGen, version: '1.0 (info.version)', base: 'https://el.cloud.unifonic.com/rest'}
+    - {api: Conversations (WhatsApp), version: v1, base: 'https://apis.unifonic.com/v1'}
+  docs: https://docs.unifonic.com/articles/release-notes-publication/2026-release-notes
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation policy found; the SMS docs still document the legacy /wrapper endpoints alongside /rest.
+sla:
+  url: null
+  note: No public SLA page found.
+status_page: https://status.unifonic.com/
+status_page_provider: Freshstatus
+deprecated_operations: []
+release_notes:
+  cadence: monthly (yearly index pages back to 2022)
+  latest: https://docs.unifonic.com/articles/release-notes-publication/may-2026-release-notes
+  detail: changelog/unifonic-changelog.yml

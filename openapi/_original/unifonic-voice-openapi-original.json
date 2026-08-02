@@ -1,0 +1,887 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Unifonic Voice APIs",
+    "description": "The Unifonic Voice Call APIs provides a industry-leading experience for developers to programmatically trigger and control voice calls.",
+    "version": "1.2.0"
+  },
+  "tags": [
+    {
+      "name": "Call Management and Status"
+    },
+    {
+      "name": "Call Queue Management"
+    },
+    {
+      "name": "Number Masking"
+    },
+    {
+      "name": "Webhooks"
+    }
+  ],
+  "paths": {
+    "/calls": {
+      "post": {
+        "operationId": "CreateCall",
+        "summary": "Creates an Outbound Call",
+        "parameters": [
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json;charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/Call_Create"
+              }
+            }
+          },
+          "description": "Recipient, callerId, call instructions",
+          "required": true
+        },
+        "description": "This operation creates a request to generate outbound calls to a list of recipients specified within the API payload.",
+        "tags": [
+          "Call Management and Status"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Call_Create_Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error400"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error403"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/providers/voice-call-log/{callId}": {
+      "get": {
+        "operationId": "retrieveStatusOfCall",
+        "summary": "Retrieves call status",
+        "description": "This operation retrieves the call status(es) of all the dials pertaining to a particular callId. A callId is provided in the API response whenever a POST/Calls API is accepted. ",
+        "tags": [
+          "Call Management and Status"
+        ],
+        "parameters": [
+          {
+            "name": "callId",
+            "description": "identifier of the call API request",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCallResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/providers/queues/{queueName}": {
+      "get": {
+        "operationId": "getSpecificQueue",
+        "summary": "Retrieves a specific call queue",
+        "description": "This operation retrieves the details in a specific call queue",
+        "tags": [
+          "Call Queue Management"
+        ],
+        "parameters": [
+          {
+            "name": "queueName",
+            "description": "the queue name where the queue details is to be retrieved",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/QueuedCalls"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/providers/queues/{queueName}/dequeue": {
+      "post": {
+        "operationId": "dequeueFIFO",
+        "summary": "Dequeue the first caller in queue",
+        "description": "This operation creates a request to dequeue the caller who is currently the first in line towards another callerId which represents the service agent.",
+        "tags": [
+          "Call Queue Management"
+        ],
+        "parameters": [
+          {
+            "name": "redirectTo",
+            "description": "the callerId to redirect the call to",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "queueName",
+            "description": "Requested number of resources to be provided in response",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/providers/masks": {
+      "get": {
+        "operationId": "retrieveAllMaskingSessions",
+        "summary": "Retrieves all masking sessions",
+        "description": "This operation retrieves a list of all masking sessions",
+        "tags": [
+          "Number Masking"
+        ],
+        "parameters": [
+          {
+            "name": "toDate",
+            "description": "date ending with",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fromDate",
+            "description": "date starting with",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sort",
+            "description": "asc or desc",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "status",
+            "description": "active or inactive",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Get_Masking_Sessions"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTwoWayNumberMaskingSession",
+        "summary": "Creates a Two Way Number Masking Session",
+        "description": "This operation creates a Number Masking session for two parties.",
+        "tags": [
+          "Number Masking"
+        ],
+        "parameters": [
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json;charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/Two_Way_Masking_Session_Create"
+              }
+            }
+          },
+          "description": "The parties in a number masking session",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Create_Masking_Session_Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/providers/config/masks": {
+      "post": {
+        "operationId": "createOneWayNumberMaskingSession",
+        "summary": "Creates a One Way Number Masking Session",
+        "description": "This operation creates a Number Masking session for one party.",
+        "tags": [
+          "Number Masking"
+        ],
+        "parameters": [
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json;charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/One_Way_Masking_Session_Create"
+              }
+            }
+          },
+          "description": "The parties in a number masking session",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Create_Masking_Session_Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/providers/{maskId}": {
+      "get": {
+        "operationId": "retrieveSpecificMaskingSession",
+        "summary": "Retrieves details of a specific masking session",
+        "description": "This operation list or find UsageSpecification entities",
+        "tags": [
+          "Number Masking"
+        ],
+        "parameters": [
+          {
+            "name": "maskId",
+            "description": "Identifier of the specific Number Masking Session",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Create_Masking_Session_Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deactivatesNumberMaskingSession",
+        "summary": "Deactivates a specific masking session",
+        "description": "This operation deactivates a Masking Session. Parties can no longer contact each other after this operation.",
+        "tags": [
+          "Number Masking"
+        ],
+        "parameters": [
+          {
+            "name": "maskId",
+            "description": "Identifier of the Masking Session to be deleted",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/providers/webhook": {
+      "post": {
+        "operationId": "createsWebhook",
+        "summary": "Creates a Webhook",
+        "description": "This operation creates a Webhook for a particular voice application",
+        "tags": [
+          "Webhooks"
+        ],
+        "parameters": [
+          {
+            "name": "appsId",
+            "description": "applicationId found on Unifonic Console",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json;charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/Create_Webhook"
+              }
+            }
+          },
+          "description": "payload for webhook creation. The url as specified will receive all of the call updates taking place on this voice application.",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://voice.unifonic.com/v1"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Status": {
+        "type": "string",
+        "description": "status of a call",
+        "enum": [
+          "queued",
+          "completed",
+          "busy",
+          "failed",
+          "rejected",
+          "cancelled"
+        ]
+      },
+      "Ivr": {
+        "type": "object",
+        "description": "ivr call instruction. Only required when type is chosen as ivr.",
+        "required": [
+          "language",
+          "voice"
+        ],
+        "properties": {
+          "say": {
+            "type": "string",
+            "example": "Hello, how is your day?",
+            "description": "If a say parameter is present, a language and voice parameter is compulsory/required. The content within the say parameter will be processed through a text-to-speech converter and the audio file will be generated and played over the call."
+          },
+          "language": {
+            "type": "string",
+            "description": "english or arabic"
+          },
+          "voice": {
+            "type": "string",
+            "description": "male or female"
+          },
+          "play": {
+            "type": "string",
+            "description": "audioId taken from Unifonic Console"
+          },
+          "loop": {
+            "type": "string",
+            "description": "number of times a say or play message is repeated"
+          },
+          "responseUrl": {
+            "type": "string",
+            "format": "url",
+            "description": "a POST API which allows Unifonic to send the DTMF digits that was inputted by the end user."
+          },
+          "onEmptyResponse": {
+            "type": "string",
+            "description": "in cases where the end user does not respond to the ivr question, this message will be played and the call will terminate."
+          },
+          "speechCollectionLanguage": {
+            "type": "string",
+            "description": "if present, then the response collection activity will be done via speech recognition with this defined language. Supports english and arabic only."
+          },
+          "digitsLimit": {
+            "type": "string",
+            "description": "the number of digits you expect to receive from the end user's input. for example, if digitsLimit is 1, then the only the first digit from the end user is collected."
+          },
+          "transfer": {
+            "type": "string",
+            "example": "+96654999999",
+            "description": "the callerId where the call is going to be transferred to"
+          },
+          "queueName": {
+            "type": "string",
+            "description": "name of the queue which an incoming call is to be added to"
+          }
+        }
+      },
+      "Call_Create_Response": {
+        "type": "object",
+        "description": "API response for call creation",
+        "properties": {
+          "callId": {
+            "type": "string",
+            "description": "unique identifier"
+          },
+          "status": {
+            "type": "string",
+            "example": "Request has been sent.",
+            "description": "status of the call request"
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "referenceId as specified in payload"
+          }
+        }
+      },
+      "Call_Create": {
+        "type": "object",
+        "description": "A payload for call creation. Most of the fields would be found to be optional. A combination of different fields typically result in different call experiences.",
+        "required": [
+          "recipient",
+          "callerId",
+          "type"
+        ],
+        "properties": {
+          "recipient": {
+            "type": "array",
+            "description": "Description of usage",
+            "items": {
+              "$ref": "#/components/schemas/Recipient"
+            }
+          },
+          "callerId": {
+            "example": "+966115219000",
+            "type": "string",
+            "description": "callerId which is used to send the outbound calls"
+          },
+          "type": {
+            "$ref": "#/components/schemas/Type"
+          },
+          "callRecording": {
+            "type": "boolean",
+            "description": "optional field. Setting to true would result in a recorded call, call recording will be made available on the Unifonic Console"
+          },
+          "expiry": {
+            "example": "2020-09-21T09:13:16.000Z",
+            "type": "string",
+            "description": "Date and Time of Expiry"
+          },
+          "ivr": {
+            "$ref": "#/components/schemas/Ivr"
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "any content that is of relevance, as this will be appended as a query in all responses and webhook notification"
+          }
+        }
+      },
+      "Create_Masking_Session_Response": {
+        "type": "object",
+        "required": [
+          "maskId",
+          "callerId",
+          "status",
+          "timeCreation",
+          "timeDeactivation",
+          "timeExpiry",
+          "requestBody"
+        ],
+        "properties": {
+          "maskId": {
+            "type": "string",
+            "description": "identifier of the masking session"
+          },
+          "callerId": {
+            "type": "string",
+            "description": "callerId used for this masking session"
+          },
+          "secondaryCallerId": {
+            "type": "string",
+            "description": "secondary callerId to be used for this masking session"
+          },
+          "status": {
+            "type": "string",
+            "description": "status of this masking session - active or inactive"
+          },
+          "timeCreation": {
+            "type": "string",
+            "description": "date and time of which this session was created"
+          },
+          "timeExpiry": {
+            "type": "string",
+            "description": "data and time of which this session will expire"
+          },
+          "timeDeactivation": {
+            "type": "string",
+            "description": "date and time of which this session was deactivated"
+          },
+          "requestBody": {
+            "type": "string",
+            "description": "payload which was accepted"
+          }
+        }
+      },
+      "Create_Webhook": {
+        "type": "object",
+        "description": "payload",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "url to receive the webhook notifications"
+          },
+          "basicAuthNeeded": {
+            "type": "boolean",
+            "description": "true or false"
+          },
+          "username": {
+            "type": "string",
+            "description": "username for Base64"
+          },
+          "password": {
+            "type": "string",
+            "description": "password for Base64"
+          }
+        }
+      },
+      "GetCallResponse": {
+        "type": "object",
+        "description": "API response for call creation",
+        "properties": {
+          "callId": {
+            "type": "string",
+            "description": "status of the call request"
+          },
+          "type": {
+            "$ref": "#/components/schemas/Type"
+          },
+          "retry": {
+            "type": "string",
+            "description": "retries attempted on this call"
+          },
+          "callerId": {
+            "type": "string",
+            "description": "callerId used to make the call"
+          },
+          "recipients": {
+            "type": "array",
+            "description": "recipient list",
+            "items": {
+              "$ref": "#/components/schemas/RecipientArray"
+            }
+          }
+        }
+      },
+      "Get_Masking_Sessions": {
+        "type": "object",
+        "description": "all masking sessions in scope",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Create_Masking_Session_Response"
+            }
+          }
+        }
+      },
+      "Two_Way_Masking_Session_Create": {
+        "type": "object",
+        "description": "payload for creating a number masking session",
+        "required": [
+          "to",
+          "from"
+        ],
+        "properties": {
+          "to": {
+            "type": "string",
+            "example": "+966555000000",
+            "description": "party A of a number masking session"
+          },
+          "from": {
+            "type": "string",
+            "example": "+966555000001",
+            "description": "party B of a number masking session"
+          }
+        }
+      },
+      "One_Way_Masking_Session_Create": {
+        "type": "object",
+        "description": "payload for creating a number masking session",
+        "required": [
+          "to"
+        ],
+        "properties": {
+          "to": {
+            "type": "string",
+            "example": "+966555000000",
+            "description": "party A of a number masking session"
+          }
+        }
+      },
+      "Recipient": {
+        "type": "string",
+        "description": "recipient array",
+        "example": "+966554999999"
+      },
+      "RecipientArray": {
+        "type": "object",
+        "description": "recipient array",
+        "properties": {
+          "duration": {
+            "type": "string",
+            "description": "duration of call"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "number": {
+            "type": "string"
+          }
+        }
+      },
+      "Type": {
+        "type": "string",
+        "description": "Possible values for the status of the Usage",
+        "enum": [
+          "ivr",
+          "audioUrl",
+          "otp",
+          "tts"
+        ]
+      },
+      "QueuedCalls": {
+        "type": "object",
+        "properties": {
+          "callId": {
+            "type": "string",
+            "description": "callId referencing this inbound call"
+          },
+          "waitingTime": {
+            "type": "string",
+            "example": "500",
+            "description": "duration, in seconds, of the caller waiting in the queue"
+          },
+          "position": {
+            "type": "string",
+            "example": "1",
+            "description": "position in the queue"
+          },
+          "dateEnqueued": {
+            "type": "string",
+            "example": "Wed, 09 Mar 2022 09:08:42 +0000",
+            "description": "date and time when the call was added to queue"
+          }
+        }
+      },
+      "Error400": {
+        "description": "Used when an API throws an Error, typically with a HTTP error response-code 400",
+        "type": "object",
+        "required": [
+          "message",
+          "errors"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Application relevant detail, defined in the API or a common list."
+          },
+          "errors": {
+            "type": "string",
+            "description": "Explanation of the reason for the error which can be shown to a client user."
+          }
+        }
+      },
+      "Error403": {
+        "description": "Used when an API throws an Error, typically with a HTTP error response-code 403",
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Missing Authentication Token",
+            "description": "Application relevant detail, defined in the API or a common list."
+          }
+        }
+      },
+      "Error500": {
+        "description": "Used when an API throws an Error, typically with a HTTP error response-code 500",
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "null",
+            "description": "Application relevant detail, defined in the API or a common list."
+          }
+        }
+      }
+    }
+  },
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": true
+  }
+}

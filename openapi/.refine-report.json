@@ -1,0 +1,26 @@
+{
+  "provider": "unifonic",
+  "sources": [
+    "unifonic-call-management-and-status-api-openapi.yml",
+    "unifonic-call-queue-management-api-openapi.yml",
+    "unifonic-number-masking-api-openapi.yml",
+    "unifonic-rest-api-openapi.yml",
+    "unifonic-verifications-api-openapi.yml",
+    "unifonic-webhooks-api-openapi.yml",
+    "unifonic-wrapper-api-openapi.yml"
+  ],
+  "outputs": [
+    "unifonic-call-management-and-status-api-openapi.yml",
+    "unifonic-call-queue-management-api-openapi.yml",
+    "unifonic-number-masking-api-openapi.yml",
+    "unifonic-rest-api-openapi.yml",
+    "unifonic-verifications-api-openapi.yml",
+    "unifonic-webhooks-api-openapi.yml",
+    "unifonic-wrapper-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
