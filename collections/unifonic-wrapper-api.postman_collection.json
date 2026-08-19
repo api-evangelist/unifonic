@@ -1,0 +1,733 @@
+{
+  "item": [
+    {
+      "id": "3489345c-d1c2-4669-9c10-7241a9300944",
+      "name": "Wrapper",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe40bb13-af3c-4aa6-9599-2c4c25cc00e7",
+          "name": "Get msgQuery",
+          "request": {
+            "name": "Get msgQuery",
+            "description": {
+              "content": "Unifonic Get message query API allows you to get details of specified message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wrapper",
+                "msgQuery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appsid",
+                  "value": "<string>",
+                  "description": "(Required) A character string that uniquely identifies your app"
+                },
+                {
+                  "disabled": false,
+                  "key": "msgid",
+                  "value": "<long>",
+                  "description": "(Required) A unique ID that identifies a message"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>",
+                  "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14b95108-9acb-4cff-81d5-96750b20df3f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "msgQuery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msgid",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"STATUS05\": \"The message has been sent successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bc47629-62a3-41fe-a798-533135381fe3",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "msgQuery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msgid",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e819effb-d0fb-47de-bf40-d8f4a7d77ede",
+              "name": "Missing parameter AppSid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "msgQuery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msgid",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29a2fd0d-6c14-49a1-8c33-c131971cc679",
+              "name": "MessageId must be numeric",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "msgQuery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msgid",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 432,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "436f23a5-6664-467b-8578-6e6ef07ff22c",
+              "name": "User must specify either messageId or recipient parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "msgQuery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msgid",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 452,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7475a408-f40e-4747-9274-9acd3d517f91",
+          "name": "Send message",
+          "request": {
+            "name": "Send message",
+            "description": {
+              "content": "Unifonic Send Wrapper API allows you to send  text messages to  multiple users at the same time",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wrapper",
+                "sendSMS.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appsid",
+                  "value": "<string>",
+                  "description": "(Required) A character string that uniquely identifies your app"
+                },
+                {
+                  "disabled": false,
+                  "key": "msg",
+                  "value": "<string>",
+                  "description": "(Required) Message body supports both English and unicodes characters, concatenated messages is supported"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>",
+                  "description": "(Required) Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sender",
+                  "value": "<string>",
+                  "description": "(Required) The SenderID to send from, App default SenderID is used unless else stated"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseEncode",
+                  "value": "false",
+                  "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+                },
+                {
+                  "disabled": false,
+                  "key": "encoding",
+                  "value": "UCS2",
+                  "description": "Converts information from a source into symbols for communication or storage, GSM7 for English and UCS2 for Arabic"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67e8e22c-c30d-444d-8f1d-c3ccde5399a5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "sendSMS.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "false"
+                    },
+                    {
+                      "key": "encoding",
+                      "value": "UCS2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"0\",\n  \"MessageID\": \"2000000140226\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f717e01-9f07-48f8-95da-7ded073f96f4",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "sendSMS.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "false"
+                    },
+                    {
+                      "key": "encoding",
+                      "value": "UCS2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9c4b66c-d6db-40ab-b8fb-56b9e8cbde00",
+              "name": "Missing parameter AppSid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "sendSMS.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "false"
+                    },
+                    {
+                      "key": "encoding",
+                      "value": "UCS2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92002146-8bf3-4abc-b263-5e1fcab9279a",
+              "name": "Authentication parameters are incorrectly base64 encoded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wrapper",
+                    "sendSMS.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "false"
+                    },
+                    {
+                      "key": "encoding",
+                      "value": "UCS2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 459,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authenticate.cloud.api.unifonic.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-authenticate-app-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e6ab5af2-efaf-48dc-a7f2-04157b50fb17",
+    "name": "Unifonic Authenticate Call Management and Status Wrapper API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Handles verifications with OTP to multiple channels\n\nContact Support:\n Name: Unifonic Support\n Email: support@unifonic.com",
+      "type": "text/plain"
+    }
+  }
+}

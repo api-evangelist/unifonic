@@ -1,0 +1,2003 @@
+{
+  "item": [
+    {
+      "id": "2583c96d-b828-43e5-9ae9-8961855ccbef",
+      "name": "Rest",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4a4c8d1-2fbe-46cb-9c0c-d7bc96fcc86d",
+          "name": "Stop Scheduled Messages",
+          "request": {
+            "name": "Stop Scheduled Messages",
+            "description": {
+              "content": "Unifonic Stop scheduled messages API allows you to Delete (Stops) scheduled message,If MessageID is specified only one message is stopped, Otherwise all messages are stopped through simple RESTful APIs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "SMS",
+                "messages",
+                "scheduledmessages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AppSid",
+                  "value": "<string>",
+                  "description": "(Required) A character string that uniquely identifies your app"
+                },
+                {
+                  "disabled": false,
+                  "key": "MessageID",
+                  "value": "<long>",
+                  "description": "A unique ID that identifies a message"
+                },
+                {
+                  "disabled": false,
+                  "key": "responseFormat",
+                  "value": "<string>",
+                  "description": "support json format only"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseEncode",
+                  "value": "<boolean>",
+                  "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16983f30-e9ea-484e-811c-26009c81e86c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "MessageID",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "responseFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"true\",\n  \"message\": \"\",\n  \"errorCode\": \"ER-00\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6502b6ee-e80e-4b9b-8fb8-bda12cad890e",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "MessageID",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "responseFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e83f3c39-836b-422e-b940-2f92214c03ef",
+              "name": "Scheduled message not found for this User",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "MessageID",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "responseFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "code": 455,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d66f5e9-e7a7-43bf-abee-5af005799995",
+          "name": "Send Scheduled Messages",
+          "request": {
+            "name": "Send Scheduled Messages",
+            "description": {
+              "content": "Unifonic Send Scheduled API allows you to schedule text messages to users around the globe through simple RESTful API to be sent in future.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "SMS",
+                "messages",
+                "scheduledmessages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AppSid",
+                  "value": "<string>",
+                  "description": "(Required) A character string that uniquely identifies your app"
+                },
+                {
+                  "disabled": false,
+                  "key": "SenderID",
+                  "value": "<string>",
+                  "description": "(Required) The SenderID to send from, App default SenderID is used unless else stated"
+                },
+                {
+                  "disabled": false,
+                  "key": "Recipient",
+                  "value": "<long>",
+                  "description": "(Required) Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "Body",
+                  "value": "<string>",
+                  "description": "(Required) Message body supports both English and unicodes characters, concatenated messages is supported"
+                },
+                {
+                  "disabled": false,
+                  "key": "TimeScheduled",
+                  "value": "<date-time-rfc1123>",
+                  "description": "(Required) Schedule send messages, in the following format yyyy-mm-dd HH:mm:ss"
+                },
+                {
+                  "disabled": false,
+                  "key": "responseType",
+                  "value": "<string>",
+                  "description": "Support json format only"
+                },
+                {
+                  "disabled": false,
+                  "key": "CorrelationID",
+                  "value": "<string>",
+                  "description": "Is a unique identifier value that is attached to requests and messages"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseEncode",
+                  "value": "<boolean>",
+                  "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ef07ace-ed6e-4a86-974f-a24402a7e5c9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "TimeScheduled",
+                      "value": "2023-12-31 23:59:59"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"errorCode\": \"ER-00\",\n  \"Status\": \"Accepted\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35c393cb-2608-4ccb-bed8-24217e0bf29e",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "TimeScheduled",
+                      "value": "2023-12-31 23:59:59"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a44effcb-b376-47f2-91e3-160c07d3736e",
+              "name": "Wrong parameter format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "TimeScheduled",
+                      "value": "2023-12-31 23:59:59"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87e72afc-17b3-4224-a281-096504b00b93",
+              "name": "Message body is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "TimeScheduled",
+                      "value": "2023-12-31 23:59:59"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Retry With",
+              "code": 449,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ad9d40a-5dbb-4cdc-93e3-b7069804d3fa",
+              "name": "TimeScheduled parameter must indicate time in the future",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "TimeScheduled",
+                      "value": "2023-12-31 23:59:59"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 451,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17edcc19-0886-4d6f-853f-daef85b697ff",
+              "name": "This user cannot use specified SenderID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "TimeScheduled",
+                      "value": "2023-12-31 23:59:59"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 480,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9988a44c-0701-4853-a30f-04da33faf6cd",
+              "name": "Invalid dest num",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "TimeScheduled",
+                      "value": "2023-12-31 23:59:59"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 482,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f58853c-4ad7-40b8-988f-61c3c9991ebe",
+          "name": "Scheduled Message Details",
+          "request": {
+            "name": "Scheduled Message Details",
+            "description": {
+              "content": "Unifonic Scheduled message details allows you to get details of scheduled messages through simple RESTful APIs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "SMS",
+                "messages",
+                "scheduledmessages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AppSid",
+                  "value": "<string>",
+                  "description": "(Required) A character string that uniquely identifies your app"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28eeb130-a8cf-47cc-b23b-272e78dec64a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"errorCode\": \"ER-00\",\n  \"data\": {\n    \"messages\": [\n      {\n        \"MessageID\": 3200017885421,\n        \"Status\": \"Scheduled\",\n        \"MessageBody\": \"Team\",\n        \"SenderID\": \"UNISMS\",\n        \"Recipient\": \"966000000000\",\n        \"DateCreated\": \"2018-04-30 08:51:41.842\",\n        \"TimeScheduled\": \"2020-04-12 11:50:00\"\n      }\n    ],\n    \"TotalTextMessages\": 1,\n    \"Next\": \"\",\n    \"Prev\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8038ab7-72e7-4ed0-8aa1-eaed8658cb48",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages",
+                    "scheduledmessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6db450e1-a2de-48b1-97a3-77fabb42a241",
+          "name": "Get Message Details",
+          "request": {
+            "name": "Get Message Details",
+            "description": {
+              "content": "Unifonic Get message details API allows you to get details of messages with optional filters,returns paginated messages, next page or previous page through simple RESTful APIs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "SMS",
+                "Messages",
+                "GetMessagesDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AppSid",
+                  "value": "<string>",
+                  "description": "(Required) A character string that uniquely identifies your app"
+                },
+                {
+                  "disabled": false,
+                  "key": "MessageID",
+                  "value": "<long>",
+                  "description": "A unique ID that identifies a message"
+                },
+                {
+                  "disabled": false,
+                  "key": "senderID",
+                  "value": "<string>",
+                  "description": "The SenderID to send from, App default SenderID is used unless else stated"
+                },
+                {
+                  "disabled": false,
+                  "key": "Recipient",
+                  "value": "<long>",
+                  "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<date>",
+                  "description": "The start date for the report time interval, date format should be yyyy-mm-dd"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTo",
+                  "value": "<date>",
+                  "description": "The end date for the report time interval, date format should be yyyy-mm-dd"
+                },
+                {
+                  "disabled": false,
+                  "key": "CorrelationID",
+                  "value": "<string>",
+                  "description": "Is a unique identifier value that is attached to requests and messages"
+                },
+                {
+                  "disabled": false,
+                  "key": "Limit",
+                  "value": "<long>",
+                  "description": "The maximum number of messages details"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseEncode",
+                  "value": "<boolean>",
+                  "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc92695d-fed6-411f-a01c-4954a73c3678",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "Messages",
+                    "GetMessagesDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "MessageID",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "senderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dateFrom",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"errorCode\": \"ER-00\",\n  \"data\": {\n    \"messages\": [\n      {\n        \"MessageID\": 3200017858868,\n        \"CorrelationID\": \"\",\n        \"Status\": \"\",\n        \"MessageBody\": \"success\",\n        \"Country\": \"World\",\n        \"DLR\": \"Queued\",\n        \"NumberOfUnits\": 0,\n        \"Cost\": 0,\n        \"SenderID\": \"sender\",\n        \"Recipient\": \"966000000000\",\n        \"DateCreated\": \"2018-04-11 07:58:54.563\",\n        \"DateSent\": \"2018-04-11 07:58:54.618\"\n      }\n    ],\n    \"CurrencyCode\": \"\",\n    \"TotalTextMessages\": 1,\n    \"Next\": \"\",\n    \"Prev\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39329320-dcb0-482a-93aa-673a80762c60",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "Messages",
+                    "GetMessagesDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "MessageID",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "senderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dateFrom",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e7bac29-41d3-45c7-a8e9-7314d4e2a380",
+              "name": "MessageId must be numeric",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "Messages",
+                    "GetMessagesDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "MessageID",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "senderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dateFrom",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 432,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d892d8d9-616a-4ae0-8393-c9cd4e83ddb8",
+              "name": "Request failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "Messages",
+                    "GetMessagesDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "MessageID",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "senderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dateFrom",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Network connect timeout error[23]",
+              "code": 599,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94765243-4711-4082-8183-6941d2c49682",
+          "name": "Send message",
+          "request": {
+            "name": "Send message",
+            "description": {
+              "content": "Unifonic Send API allows you to send  text messages to users around the globe through simple RESTful APIs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "SMS",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AppSid",
+                  "value": "<string>",
+                  "description": "(Required) A character string that uniquely identifies your app"
+                },
+                {
+                  "disabled": false,
+                  "key": "SenderID",
+                  "value": "<string>",
+                  "description": "(Required) The SenderID to send from, App default SenderID is used unless else stated"
+                },
+                {
+                  "disabled": false,
+                  "key": "Body",
+                  "value": "<string>",
+                  "description": "(Required) Message body supports both English and unicodes characters, concatenated messages is supported"
+                },
+                {
+                  "disabled": false,
+                  "key": "Recipient",
+                  "value": "<long>",
+                  "description": "(Required) Destination mobile number, mobile numbers must be in international format without 00 or + Example: (9660000000000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "responseType",
+                  "value": "<string>",
+                  "description": "Support json format only"
+                },
+                {
+                  "disabled": false,
+                  "key": "CorrelationID",
+                  "value": "<string>",
+                  "description": "Is a unique identifier value that is attached to requests and messages"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseEncode",
+                  "value": "<boolean>",
+                  "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+                },
+                {
+                  "disabled": false,
+                  "key": "statusCallback",
+                  "value": "<string>",
+                  "description": "The statusCallback is used by the client to receive SMS delivery status. It must be a valid HTTPS URL and should resolve to a public IP address only."
+                },
+                {
+                  "disabled": false,
+                  "key": "async",
+                  "value": "false",
+                  "description": "It specifies that the request will be executed asynchronously as soon as it is sent"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35436a00-3afd-4147-9906-552d4830ff91",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "statusCallback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "async",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": \"true\",\n  \"message\": \"\",\n  \"errorCode\": \"ER-00\",\n  \"data\": {\n    \"MessageID\": 3200017889310,\n    \"CorrelationID\": \"\",\n    \"Status\": \"Queued\",\n    \"NumberOfUnits\": 0,\n    \"Cost\": 0,\n    \"Balance\": 0,\n    \"Recipient\": \"966000000000\",\n    \"TimeCreated\": \"2018-05-07 06:41:53.237\",\n    \"CurrencyCode\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b67a4fb-4919-44f2-8965-874214de705b",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "statusCallback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "async",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7fa57eb-a27c-486f-94c7-2e83b8e43b60",
+              "name": "Message body is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "statusCallback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "async",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Retry With",
+              "code": 449,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6b34aa8-60c8-48fa-b3d8-da52e372737d",
+              "name": "This user cannot use specified SenderID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "statusCallback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "async",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 480,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c1bbdb0-4f6b-4e9a-82f4-c2eca0927a12",
+              "name": "Invalid dest num",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "SMS",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AppSid",
+                      "value": "dY2397564nsjfgwtSDE"
+                    },
+                    {
+                      "key": "SenderID",
+                      "value": "UNISMS"
+                    },
+                    {
+                      "key": "Body",
+                      "value": "Salam Alaikum!"
+                    },
+                    {
+                      "key": "Recipient",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "responseType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CorrelationID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseEncode",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "statusCallback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "async",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "code": 482,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authenticate.cloud.api.unifonic.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-authenticate-app-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8dcfeeca-a307-4cd8-a2d9-a527766af0d4",
+    "name": "Unifonic Authenticate Call Management and Status Rest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Handles verifications with OTP to multiple channels\n\nContact Support:\n Name: Unifonic Support\n Email: support@unifonic.com",
+      "type": "text/plain"
+    }
+  }
+}

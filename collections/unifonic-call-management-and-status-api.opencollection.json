@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unifonic Authenticate Call Management and Status API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-authenticate-app-id",
+      "value": "{{x-authenticate-app-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Call Management and Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates an Outbound Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/calls",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation creates a request to generate outbound calls to a list of recipients specified within the API payload."
+        },
+        {
+          "info": {
+            "name": "Retrieves call status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://authenticate.cloud.api.unifonic.com/providers/voice-call-log/:callId",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "callId",
+                "value": "",
+                "type": "path",
+                "description": "identifier of the call API request"
+              }
+            ]
+          },
+          "docs": "This operation retrieves the call status(es) of all the dials pertaining to a particular callId. A callId is provided in the API response whenever a POST/Calls API is accepted. "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

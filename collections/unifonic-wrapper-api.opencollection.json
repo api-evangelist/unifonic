@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unifonic Authenticate Call Management and Status Wrapper API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-authenticate-app-id",
+      "value": "{{x-authenticate-app-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wrapper",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get msgQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/wrapper/msgQuery",
+            "params": [
+              {
+                "name": "appsid",
+                "value": "",
+                "type": "query",
+                "description": "A character string that uniquely identifies your app"
+              },
+              {
+                "name": "msgid",
+                "value": "",
+                "type": "query",
+                "description": "A unique ID that identifies a message"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)"
+              }
+            ]
+          },
+          "docs": "Unifonic Get message query API allows you to get details of specified message."
+        },
+        {
+          "info": {
+            "name": "Send message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/wrapper/sendSMS.php",
+            "params": [
+              {
+                "name": "appsid",
+                "value": "",
+                "type": "query",
+                "description": "A character string that uniquely identifies your app"
+              },
+              {
+                "name": "msg",
+                "value": "",
+                "type": "query",
+                "description": "Message body supports both English and unicodes characters, concatenated messages is supported"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)"
+              },
+              {
+                "name": "sender",
+                "value": "",
+                "type": "query",
+                "description": "The SenderID to send from, App default SenderID is used unless else stated"
+              },
+              {
+                "name": "baseEncode",
+                "value": "",
+                "type": "query",
+                "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+              },
+              {
+                "name": "encoding",
+                "value": "",
+                "type": "query",
+                "description": "Converts information from a source into symbols for communication or storage, GSM7 for English and UCS2 for Arabic"
+              }
+            ]
+          },
+          "docs": "Unifonic Send Wrapper API allows you to send  text messages to  multiple users at the same time"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

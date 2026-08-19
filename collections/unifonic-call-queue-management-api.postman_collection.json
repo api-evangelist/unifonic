@@ -1,0 +1,275 @@
+{
+  "item": [
+    {
+      "id": "61d92014-bcdd-4889-903f-836f57bfdaba",
+      "name": "Call Queue Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "170a6d4c-95ce-49a4-b59e-8c86c45090ec",
+          "name": "Retrieves a specific call queue",
+          "request": {
+            "name": "Retrieves a specific call queue",
+            "description": {
+              "content": "This operation retrieves the details in a specific call queue",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "queues",
+                ":queueName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queueName",
+                  "description": "(Required) the queue name where the queue details is to be retrieved"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7740cbe-fe8c-4018-bc22-06587aa47a7f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "queues",
+                    ":queueName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queueName",
+                      "description": "(Required) the queue name where the queue details is to be retrieved"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"callId\": \"string\",\n      \"waitingTime\": \"500\",\n      \"position\": \"1\",\n      \"dateEnqueued\": \"Wed, 09 Mar 2022 09:08:42 +0000\"\n    },\n    {\n      \"callId\": \"string\",\n      \"waitingTime\": \"500\",\n      \"position\": \"1\",\n      \"dateEnqueued\": \"Wed, 09 Mar 2022 09:08:42 +0000\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24ca80a9-d6b9-4efe-a917-a9e23869dd04",
+          "name": "Dequeue the first caller in queue",
+          "request": {
+            "name": "Dequeue the first caller in queue",
+            "description": {
+              "content": "This operation creates a request to dequeue the caller who is currently the first in line towards another callerId which represents the service agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "queues",
+                ":queueName",
+                "dequeue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirectTo",
+                  "value": "<string>",
+                  "description": "(Required) the callerId to redirect the call to"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queueName",
+                  "description": "(Required) Requested number of resources to be provided in response"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6005a78-f200-4545-b35a-0dc5b8748efd",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "queues",
+                    ":queueName",
+                    "dequeue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirectTo",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queueName",
+                      "description": "(Required) Requested number of resources to be provided in response"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authenticate.cloud.api.unifonic.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-authenticate-app-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6ecf9c1d-9a8d-4b20-a051-1727a406421c",
+    "name": "Unifonic Authenticate Call Management and Status Call Queue Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Handles verifications with OTP to multiple channels\n\nContact Support:\n Name: Unifonic Support\n Email: support@unifonic.com",
+      "type": "text/plain"
+    }
+  }
+}

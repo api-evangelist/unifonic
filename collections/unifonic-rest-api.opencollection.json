@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unifonic Authenticate Call Management and Status Rest API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-authenticate-app-id",
+      "value": "{{x-authenticate-app-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Scheduled Message Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://authenticate.cloud.api.unifonic.com/rest/SMS/messages/scheduledmessages",
+            "params": [
+              {
+                "name": "AppSid",
+                "value": "dY2397564nsjfgwtSDE",
+                "type": "query",
+                "description": "A character string that uniquely identifies your app"
+              }
+            ]
+          },
+          "docs": "Unifonic Scheduled message details allows you to get details of scheduled messages through simple RESTful APIs"
+        },
+        {
+          "info": {
+            "name": "Send Scheduled Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/rest/SMS/messages/scheduledmessages",
+            "params": [
+              {
+                "name": "AppSid",
+                "value": "dY2397564nsjfgwtSDE",
+                "type": "query",
+                "description": "A character string that uniquely identifies your app"
+              },
+              {
+                "name": "SenderID",
+                "value": "UNISMS",
+                "type": "query",
+                "description": "The SenderID to send from, App default SenderID is used unless else stated"
+              },
+              {
+                "name": "Recipient",
+                "value": "966000000000",
+                "type": "query",
+                "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)"
+              },
+              {
+                "name": "Body",
+                "value": "Salam Alaikum!",
+                "type": "query",
+                "description": "Message body supports both English and unicodes characters, concatenated messages is supported"
+              },
+              {
+                "name": "TimeScheduled",
+                "value": "2023-12-31 23:59:59",
+                "type": "query",
+                "description": "Schedule send messages, in the following format yyyy-mm-dd HH:mm:ss"
+              },
+              {
+                "name": "responseType",
+                "value": "",
+                "type": "query",
+                "description": "Support json format only"
+              },
+              {
+                "name": "CorrelationID",
+                "value": "",
+                "type": "query",
+                "description": "Is a unique identifier value that is attached to requests and messages"
+              },
+              {
+                "name": "baseEncode",
+                "value": "",
+                "type": "query",
+                "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+              }
+            ]
+          },
+          "docs": "Unifonic Send Scheduled API allows you to schedule text messages to users around the globe through simple RESTful API to be sent in future."
+        },
+        {
+          "info": {
+            "name": "Stop Scheduled Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://authenticate.cloud.api.unifonic.com/rest/SMS/messages/scheduledmessages",
+            "params": [
+              {
+                "name": "AppSid",
+                "value": "dY2397564nsjfgwtSDE",
+                "type": "query",
+                "description": "A character string that uniquely identifies your app"
+              },
+              {
+                "name": "MessageID",
+                "value": "",
+                "type": "query",
+                "description": "A unique ID that identifies a message"
+              },
+              {
+                "name": "responseFormat",
+                "value": "",
+                "type": "query",
+                "description": "support json format only"
+              },
+              {
+                "name": "baseEncode",
+                "value": "",
+                "type": "query",
+                "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+              }
+            ]
+          },
+          "docs": "Unifonic Stop scheduled messages API allows you to Delete (Stops) scheduled message,If MessageID is specified only one message is stopped, Otherwise all messages are stopped through simple RESTful APIs."
+        },
+        {
+          "info": {
+            "name": "Get Message Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/rest/SMS/Messages/GetMessagesDetails",
+            "params": [
+              {
+                "name": "AppSid",
+                "value": "dY2397564nsjfgwtSDE",
+                "type": "query",
+                "description": "A character string that uniquely identifies your app"
+              },
+              {
+                "name": "MessageID",
+                "value": "",
+                "type": "query",
+                "description": "A unique ID that identifies a message"
+              },
+              {
+                "name": "senderID",
+                "value": "UNISMS",
+                "type": "query",
+                "description": "The SenderID to send from, App default SenderID is used unless else stated"
+              },
+              {
+                "name": "Recipient",
+                "value": "966000000000",
+                "type": "query",
+                "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (966000000000)"
+              },
+              {
+                "name": "dateFrom",
+                "value": "",
+                "type": "query",
+                "description": "The start date for the report time interval, date format should be yyyy-mm-dd"
+              },
+              {
+                "name": "dateTo",
+                "value": "",
+                "type": "query",
+                "description": "The end date for the report time interval, date format should be yyyy-mm-dd"
+              },
+              {
+                "name": "CorrelationID",
+                "value": "",
+                "type": "query",
+                "description": "Is a unique identifier value that is attached to requests and messages"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of messages details"
+              },
+              {
+                "name": "baseEncode",
+                "value": "",
+                "type": "query",
+                "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+              }
+            ]
+          },
+          "docs": "Unifonic Get message details API allows you to get details of messages with optional filters,returns paginated messages, next page or previous page through simple RESTful APIs"
+        },
+        {
+          "info": {
+            "name": "Send message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/rest/SMS/messages",
+            "params": [
+              {
+                "name": "AppSid",
+                "value": "dY2397564nsjfgwtSDE",
+                "type": "query",
+                "description": "A character string that uniquely identifies your app"
+              },
+              {
+                "name": "SenderID",
+                "value": "UNISMS",
+                "type": "query",
+                "description": "The SenderID to send from, App default SenderID is used unless else stated"
+              },
+              {
+                "name": "Body",
+                "value": "Salam Alaikum!",
+                "type": "query",
+                "description": "Message body supports both English and unicodes characters, concatenated messages is supported"
+              },
+              {
+                "name": "Recipient",
+                "value": "966000000000",
+                "type": "query",
+                "description": "Destination mobile number, mobile numbers must be in international format without 00 or + Example: (9660000000000)"
+              },
+              {
+                "name": "responseType",
+                "value": "",
+                "type": "query",
+                "description": "Support json format only"
+              },
+              {
+                "name": "CorrelationID",
+                "value": "",
+                "type": "query",
+                "description": "Is a unique identifier value that is attached to requests and messages"
+              },
+              {
+                "name": "baseEncode",
+                "value": "",
+                "type": "query",
+                "description": "Binary-to-text encoding schemes that represent binary data in an ASCII string format"
+              },
+              {
+                "name": "statusCallback",
+                "value": "",
+                "type": "query",
+                "description": "The statusCallback is used by the client to receive SMS delivery status. It must be a valid HTTPS URL and should resolve to a public IP address only."
+              },
+              {
+                "name": "async",
+                "value": "",
+                "type": "query",
+                "description": "It specifies that the request will be executed asynchronously as soon as it is sent"
+              }
+            ]
+          },
+          "docs": "Unifonic Send API allows you to send  text messages to users around the globe through simple RESTful APIs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,619 @@
+{
+  "item": [
+    {
+      "id": "d5603b93-2128-4fce-9fed-0a2cb0a01d73",
+      "name": "Number Masking",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5f69adb-0669-4688-86a0-048c246eed01",
+          "name": "Retrieves all masking sessions",
+          "request": {
+            "name": "Retrieves all masking sessions",
+            "description": {
+              "content": "This operation retrieves a list of all masking sessions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "masks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<string>",
+                  "description": "date ending with"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<integer>",
+                  "description": "date starting with"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<integer>",
+                  "description": "(Required) asc or desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<integer>",
+                  "description": "active or inactive"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "538522a8-4c64-4fe9-9ff3-dc9f95050abf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "masks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "toDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"content\": [\n    {\n      \"maskId\": \"string\",\n      \"callerId\": \"string\",\n      \"status\": \"string\",\n      \"timeCreation\": \"string\",\n      \"timeDeactivation\": \"string\",\n      \"timeExpiry\": \"string\",\n      \"requestBody\": \"string\",\n      \"secondaryCallerId\": \"string\"\n    },\n    {\n      \"maskId\": \"string\",\n      \"callerId\": \"string\",\n      \"status\": \"string\",\n      \"timeCreation\": \"string\",\n      \"timeDeactivation\": \"string\",\n      \"timeExpiry\": \"string\",\n      \"requestBody\": \"string\",\n      \"secondaryCallerId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aab3abb8-431e-4c4c-a6f8-110f725d8ac0",
+          "name": "Creates a Two Way Number Masking Session",
+          "request": {
+            "name": "Creates a Two Way Number Masking Session",
+            "description": {
+              "content": "This operation creates a Number Masking session for two parties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "masks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"<string>\",\n  \"from\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66776082-d64c-4bc6-874f-3415b4aeb48a",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "masks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"+966555000000\",\n  \"from\": \"+966555000001\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"maskId\": \"string\",\n  \"callerId\": \"string\",\n  \"status\": \"string\",\n  \"timeCreation\": \"string\",\n  \"timeDeactivation\": \"string\",\n  \"timeExpiry\": \"string\",\n  \"requestBody\": \"string\",\n  \"secondaryCallerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f91ccc46-aca3-4c51-bfdc-f77b626fb225",
+          "name": "Creates a One Way Number Masking Session",
+          "request": {
+            "name": "Creates a One Way Number Masking Session",
+            "description": {
+              "content": "This operation creates a Number Masking session for one party.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "config",
+                "masks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e860737c-f275-46b7-996c-970b54878048",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "config",
+                    "masks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": \"+966555000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"maskId\": \"string\",\n  \"callerId\": \"string\",\n  \"status\": \"string\",\n  \"timeCreation\": \"string\",\n  \"timeDeactivation\": \"string\",\n  \"timeExpiry\": \"string\",\n  \"requestBody\": \"string\",\n  \"secondaryCallerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3daf15a4-e82f-4e3d-b9e0-263a11774cfd",
+          "name": "Retrieves details of a specific masking session",
+          "request": {
+            "name": "Retrieves details of a specific masking session",
+            "description": {
+              "content": "This operation list or find UsageSpecification entities",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                ":maskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "maskId",
+                  "description": "(Required) Identifier of the specific Number Masking Session"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a14c731-15d8-4792-a380-dbb2d822739d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    ":maskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "maskId",
+                      "description": "(Required) Identifier of the specific Number Masking Session"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"maskId\": \"string\",\n  \"callerId\": \"string\",\n  \"status\": \"string\",\n  \"timeCreation\": \"string\",\n  \"timeDeactivation\": \"string\",\n  \"timeExpiry\": \"string\",\n  \"requestBody\": \"string\",\n  \"secondaryCallerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a98f9e6-f0a7-41e7-ab6c-15e650aa2479",
+          "name": "Deactivates a specific masking session",
+          "request": {
+            "name": "Deactivates a specific masking session",
+            "description": {
+              "content": "This operation deactivates a Masking Session. Parties can no longer contact each other after this operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                ":maskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "maskId",
+                  "description": "(Required) Identifier of the Masking Session to be deleted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e69e1936-04c7-4cac-8f30-cc48427e08eb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    ":maskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "maskId",
+                      "description": "(Required) Identifier of the Masking Session to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authenticate.cloud.api.unifonic.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-authenticate-app-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "80f92db7-33e9-407b-b00e-07941f0cda6d",
+    "name": "Unifonic Authenticate Call Management and Status Number Masking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Handles verifications with OTP to multiple channels\n\nContact Support:\n Name: Unifonic Support\n Email: support@unifonic.com",
+      "type": "text/plain"
+    }
+  }
+}

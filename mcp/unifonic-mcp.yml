@@ -2,60 +2,62 @@ generated: '2026-07-21'
 method: searched
 status: candidate
 source: https://www.npmjs.com/package/@theyahia/unifonic-mcp
-description: >-
-  Unifonic publishes no official MCP server (no MCP mention in the docs, no
-  official GitHub organization, nothing in the MCP registry). A
-  community-built MCP server exists on npm — @theyahia/unifonic-mcp v1.1.1
-  ("MCP server for Unifonic — SMS, voice, WhatsApp CPaaS (Saudi Arabia)",
-  last modified 2026-04-01) — captured below, plus a candidate tool list
-  derived from the operations of the three official OpenAPI documents in this
-  repo for what a first-party server should expose.
+description: Unifonic publishes no official MCP server (no MCP mention in the docs, no official GitHub
+  organization, nothing in the MCP registry). A community-built MCP server exists on npm — @theyahia/unifonic-mcp
+  v1.1.1 ("MCP server for Unifonic — SMS, voice, WhatsApp CPaaS (Saudi Arabia)", last modified 2026-04-01)
+  — captured below, plus a candidate tool list derived from the operations of the three official OpenAPI
+  documents in this repo for what a first-party server should expose.
 servers:
-  - name: unifonic-mcp (community)
-    kind: local-npm
-    transport: stdio
-    package: "@theyahia/unifonic-mcp"
-    version: 1.1.1
-    bin: unifonic-mcp
-    registry: npm
-    npm: https://www.npmjs.com/package/@theyahia/unifonic-mcp
-    repo: https://github.com/theYahia/unifonic-mcp
-    official: false
-    note: Community project, not published or endorsed by Unifonic.
+- name: unifonic-mcp (community)
+  kind: local-npm
+  transport: stdio
+  package: '@theyahia/unifonic-mcp'
+  version: 1.1.1
+  bin: unifonic-mcp
+  registry: npm
+  npm: https://www.npmjs.com/package/@theyahia/unifonic-mcp
+  repo: https://github.com/theYahia/unifonic-mcp
+  official: false
+  note: Community project, not published or endorsed by Unifonic.
 candidate_tools:
-  - name: send_sms
-    description: Send an SMS message
-    source_operation: openapi/unifonic-sms-openapi-original.json#Sendmessage
-  - name: get_message_details
-    description: Query SMS message delivery details
-    source_operation: openapi/unifonic-sms-openapi-original.json#GetMessageDetails
-  - name: send_scheduled_message
-    description: Schedule an SMS for future delivery
-    source_operation: openapi/unifonic-sms-openapi-original.json#SendScheduledMessages
-  - name: stop_scheduled_messages
-    description: Stop one or all scheduled messages
-    source_operation: openapi/unifonic-sms-openapi-original.json#StopScheduledMessages
-  - name: list_scheduled_messages
-    description: List scheduled message details
-    source_operation: openapi/unifonic-sms-openapi-original.json#ScheduledMessageDetails
-  - name: create_verification
-    description: Start an OTP verification over SMS, WhatsApp, or voice
-    source_operation: openapi/unifonic-authenticate-openapi-original.json#CreateVerification
-  - name: check_verification
-    description: Check an OTP verification code
-    source_operation: openapi/unifonic-authenticate-openapi-original.json#CheckVerification
-  - name: create_call
-    description: Place an outbound voice call
-    source_operation: openapi/unifonic-voice-openapi-original.json#CreateCall
-  - name: get_call_status
-    description: Retrieve the status of a voice call
-    source_operation: openapi/unifonic-voice-openapi-original.json#retrieveStatusOfCall
-  - name: create_masking_session
-    description: Create a two-way number-masking session
-    source_operation: openapi/unifonic-voice-openapi-original.json#createTwoWayNumberMaskingSession
-  - name: deactivate_masking_session
-    description: Deactivate a number-masking session
-    source_operation: openapi/unifonic-voice-openapi-original.json#deactivatesNumberMaskingSession
-  - name: register_call_webhook
-    description: Register a webhook for call statuses
-    source_operation: openapi/unifonic-voice-openapi-original.json#createsWebhook
+- name: send_sms
+  description: Send an SMS message
+  source_operation: openapi/unifonic-sms-openapi-original.json#Sendmessage
+- name: get_message_details
+  description: Query SMS message delivery details
+  source_operation: openapi/unifonic-sms-openapi-original.json#GetMessageDetails
+- name: send_scheduled_message
+  description: Schedule an SMS for future delivery
+  source_operation: openapi/unifonic-sms-openapi-original.json#SendScheduledMessages
+- name: stop_scheduled_messages
+  description: Stop one or all scheduled messages
+  source_operation: openapi/unifonic-sms-openapi-original.json#StopScheduledMessages
+- name: list_scheduled_messages
+  description: List scheduled message details
+  source_operation: openapi/unifonic-sms-openapi-original.json#ScheduledMessageDetails
+- name: create_verification
+  description: Start an OTP verification over SMS, WhatsApp, or voice
+  source_operation: openapi/unifonic-authenticate-openapi-original.json#CreateVerification
+- name: check_verification
+  description: Check an OTP verification code
+  source_operation: openapi/unifonic-authenticate-openapi-original.json#CheckVerification
+- name: create_call
+  description: Place an outbound voice call
+  source_operation: openapi/unifonic-voice-openapi-original.json#CreateCall
+- name: get_call_status
+  description: Retrieve the status of a voice call
+  source_operation: openapi/unifonic-voice-openapi-original.json#retrieveStatusOfCall
+- name: create_masking_session
+  description: Create a two-way number-masking session
+  source_operation: openapi/unifonic-voice-openapi-original.json#createTwoWayNumberMaskingSession
+- name: deactivate_masking_session
+  description: Deactivate a number-masking session
+  source_operation: openapi/unifonic-voice-openapi-original.json#deactivatesNumberMaskingSession
+- name: register_call_webhook
+  description: Register a webhook for call statuses
+  source_operation: openapi/unifonic-voice-openapi-original.json#createsWebhook
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census

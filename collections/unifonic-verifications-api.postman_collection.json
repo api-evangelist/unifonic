@@ -1,0 +1,515 @@
+{
+  "item": [
+    {
+      "id": "2ad85f1b-6951-4133-b1a9-aa9fb5e6b456",
+      "name": "Verifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4811d351-ade9-4b63-832a-9e039157bf73",
+          "name": "Check Verification",
+          "request": {
+            "name": "Check Verification",
+            "description": {
+              "content": "This API is used for verification of the OTP. In case any error, error_code will be passed alongwith  the response_status in response.\n- 101 for Correct\n- 107 for Incorrect\n- 108 for Attempts Exceeded\n- 109 for Code Expired\n- 110 for Already Verified",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "api",
+                "v2",
+                "verifications",
+                "check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Address of receiver"
+                },
+                {
+                  "disabled": false,
+                  "key": "channel",
+                  "value": "<string>",
+                  "description": "(Required) Channel you want to send. Possible values are `sms`, `whatsapp` & `voice`."
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) The code which user has entered"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a4d099b7-4e6d-467b-bf95-1d257a83cc1d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "api",
+                    "v2",
+                    "verifications",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Address of receiver",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+966512345678"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Channel you want to send. Possible values are `sms`, `whatsapp` & `voice`.",
+                        "type": "text/plain"
+                      },
+                      "key": "channel",
+                      "value": "sms"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The code which user has entered",
+                        "type": "text/plain"
+                      },
+                      "key": "code",
+                      "value": "12345"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"to\": \"+966512345678\",\n  \"channel\": \"sms\",\n  \"id\": \"953c0c21-ef8f-4efe-8482-090d5b967ea0\",\n  \"response_status\": \"correct\",\n  \"length\": 5,\n  \"locale\": \"ar\",\n  \"code_type\": \"numeric\",\n  \"error_code\": 101\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d41cdc66-cf7a-4022-b82c-e0b2ae7385b8",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "api",
+                    "v2",
+                    "verifications",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Address of receiver",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+966512345678"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Channel you want to send. Possible values are `sms`, `whatsapp` & `voice`.",
+                        "type": "text/plain"
+                      },
+                      "key": "channel",
+                      "value": "sms"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The code which user has entered",
+                        "type": "text/plain"
+                      },
+                      "key": "code",
+                      "value": "12345"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2aa48b03-7b69-4880-953b-06bfa0bc023a",
+          "name": "Create Verification",
+          "request": {
+            "name": "Create Verification",
+            "description": {
+              "content": "This endpoint sends a verification code through any of channels mainly `Sms`, `Voice` & `Whatsapp`. By default it sends messages to all configured channels in the Authenticate app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "api",
+                "v2",
+                "verifications",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Address of receiver"
+                },
+                {
+                  "disabled": false,
+                  "key": "channel",
+                  "value": "<string>",
+                  "description": "Channel you want to use for sending verification code. Currently there are three channels  `SMS`, `Voice` & `WhatsApp`. Their priorities can be defined in Unifonic Authenticate configuration panel. By default it will send verification through all of configured channels. If channel is not defined the verification code will be sent on the basis of priority defined for each channel."
+                },
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "en",
+                  "description": "In what language you want to send"
+                },
+                {
+                  "disabled": false,
+                  "key": "length",
+                  "value": "<string>",
+                  "description": "Length of verification code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c31fd733-d422-4ea6-a2b8-9258d156d764",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "api",
+                    "v2",
+                    "verifications",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Address of receiver",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+966512345678"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Channel you want to use for sending verification code. Currently there are three channels  `SMS`, `Voice` & `WhatsApp`. Their priorities can be defined in Unifonic Authenticate configuration panel. By default it will send verification through all of configured channels. If channel is not defined the verification code will be sent on the basis of priority defined for each channel.",
+                        "type": "text/plain"
+                      },
+                      "key": "channel",
+                      "value": "sms"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "In what language you want to send",
+                        "type": "text/plain"
+                      },
+                      "key": "locale",
+                      "value": "ar"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Length of verification code",
+                        "type": "text/plain"
+                      },
+                      "key": "length",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"to\": \"+966512345678\",\n  \"channel\": \"sms\",\n  \"id\": \"953c0c21-ef8f-4efe-8482-090d5b967ea0\",\n  \"response_status\": \"correct\",\n  \"length\": 5,\n  \"locale\": \"ar\",\n  \"code_type\": \"numeric\",\n  \"error_code\": 101\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03a5b819-67f8-42cb-ac09-98f2eeaa991e",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "api",
+                    "v2",
+                    "verifications",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Address of receiver",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+966512345678"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Channel you want to use for sending verification code. Currently there are three channels  `SMS`, `Voice` & `WhatsApp`. Their priorities can be defined in Unifonic Authenticate configuration panel. By default it will send verification through all of configured channels. If channel is not defined the verification code will be sent on the basis of priority defined for each channel.",
+                        "type": "text/plain"
+                      },
+                      "key": "channel",
+                      "value": "sms"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "In what language you want to send",
+                        "type": "text/plain"
+                      },
+                      "key": "locale",
+                      "value": "ar"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Length of verification code",
+                        "type": "text/plain"
+                      },
+                      "key": "length",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authenticate.cloud.api.unifonic.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-authenticate-app-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "50e73d7b-6af0-47a7-8ffe-53de0dd6f4cb",
+    "name": "Unifonic Authenticate Call Management and Status Verifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Handles verifications with OTP to multiple channels\n\nContact Support:\n Name: Unifonic Support\n Email: support@unifonic.com",
+      "type": "text/plain"
+    }
+  }
+}

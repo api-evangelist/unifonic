@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unifonic Authenticate Call Management and Status Number Masking API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-authenticate-app-id",
+      "value": "{{x-authenticate-app-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Number Masking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves all masking sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://authenticate.cloud.api.unifonic.com/providers/masks",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "date ending with"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "date starting with"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "asc or desc"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "active or inactive"
+              }
+            ]
+          },
+          "docs": "This operation retrieves a list of all masking sessions"
+        },
+        {
+          "info": {
+            "name": "Creates a Two Way Number Masking Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/providers/masks",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation creates a Number Masking session for two parties."
+        },
+        {
+          "info": {
+            "name": "Creates a One Way Number Masking Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/providers/config/masks",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation creates a Number Masking session for one party."
+        },
+        {
+          "info": {
+            "name": "Retrieves details of a specific masking session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://authenticate.cloud.api.unifonic.com/providers/:maskId",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "maskId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the specific Number Masking Session"
+              }
+            ]
+          },
+          "docs": "This operation list or find UsageSpecification entities"
+        },
+        {
+          "info": {
+            "name": "Deactivates a specific masking session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://authenticate.cloud.api.unifonic.com/providers/:maskId",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "maskId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Masking Session to be deleted"
+              }
+            ]
+          },
+          "docs": "This operation deactivates a Masking Session. Parties can no longer contact each other after this operation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

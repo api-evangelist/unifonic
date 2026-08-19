@@ -1,0 +1,441 @@
+{
+  "item": [
+    {
+      "id": "4cc73c2c-39d8-460d-8365-1245a368392d",
+      "name": "Call Management and Status",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cadd6f16-47b7-42e4-b316-11464e5a035c",
+          "name": "Creates an Outbound Call",
+          "request": {
+            "name": "Creates an Outbound Call",
+            "description": {
+              "content": "This operation creates a request to generate outbound calls to a list of recipients specified within the API payload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "calls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"callerId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"callRecording\": \"<boolean>\",\n  \"expiry\": \"<string>\",\n  \"ivr\": {\n    \"language\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"say\": \"<string>\",\n    \"play\": \"<string>\",\n    \"loop\": \"<string>\",\n    \"responseUrl\": \"<url>\",\n    \"onEmptyResponse\": \"<string>\",\n    \"speechCollectionLanguage\": \"<string>\",\n    \"digitsLimit\": \"<string>\",\n    \"transfer\": \"<string>\",\n    \"queueName\": \"<string>\"\n  },\n  \"referenceId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1e9a35d-6e77-4e2a-96b7-06795cce842b",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": [\n    \"+966554999999\",\n    \"+966554999999\"\n  ],\n  \"callerId\": \"+966115219000\",\n  \"type\": \"<string>\",\n  \"callRecording\": \"<boolean>\",\n  \"expiry\": \"2020-09-21T09:13:16.000Z\",\n  \"ivr\": {\n    \"language\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"say\": \"Hello, how is your day?\",\n    \"play\": \"<string>\",\n    \"loop\": \"<string>\",\n    \"responseUrl\": \"<url>\",\n    \"onEmptyResponse\": \"<string>\",\n    \"speechCollectionLanguage\": \"<string>\",\n    \"digitsLimit\": \"<string>\",\n    \"transfer\": \"+96654999999\",\n    \"queueName\": \"<string>\"\n  },\n  \"referenceId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callId\": \"string\",\n  \"status\": \"Request has been sent.\",\n  \"referenceId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec11ee0b-9d3f-47de-ab0d-6cd82482d4d2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": [\n    \"+966554999999\",\n    \"+966554999999\"\n  ],\n  \"callerId\": \"+966115219000\",\n  \"type\": \"<string>\",\n  \"callRecording\": \"<boolean>\",\n  \"expiry\": \"2020-09-21T09:13:16.000Z\",\n  \"ivr\": {\n    \"language\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"say\": \"Hello, how is your day?\",\n    \"play\": \"<string>\",\n    \"loop\": \"<string>\",\n    \"responseUrl\": \"<url>\",\n    \"onEmptyResponse\": \"<string>\",\n    \"speechCollectionLanguage\": \"<string>\",\n    \"digitsLimit\": \"<string>\",\n    \"transfer\": \"+96654999999\",\n    \"queueName\": \"<string>\"\n  },\n  \"referenceId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e22490c-f93e-4e65-9068-0bf1bc648d0a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": [\n    \"+966554999999\",\n    \"+966554999999\"\n  ],\n  \"callerId\": \"+966115219000\",\n  \"type\": \"<string>\",\n  \"callRecording\": \"<boolean>\",\n  \"expiry\": \"2020-09-21T09:13:16.000Z\",\n  \"ivr\": {\n    \"language\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"say\": \"Hello, how is your day?\",\n    \"play\": \"<string>\",\n    \"loop\": \"<string>\",\n    \"responseUrl\": \"<url>\",\n    \"onEmptyResponse\": \"<string>\",\n    \"speechCollectionLanguage\": \"<string>\",\n    \"digitsLimit\": \"<string>\",\n    \"transfer\": \"+96654999999\",\n    \"queueName\": \"<string>\"\n  },\n  \"referenceId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing Authentication Token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0858f0a3-65c5-4572-85f0-ed7eef01a53a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": [\n    \"+966554999999\",\n    \"+966554999999\"\n  ],\n  \"callerId\": \"+966115219000\",\n  \"type\": \"<string>\",\n  \"callRecording\": \"<boolean>\",\n  \"expiry\": \"2020-09-21T09:13:16.000Z\",\n  \"ivr\": {\n    \"language\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"say\": \"Hello, how is your day?\",\n    \"play\": \"<string>\",\n    \"loop\": \"<string>\",\n    \"responseUrl\": \"<url>\",\n    \"onEmptyResponse\": \"<string>\",\n    \"speechCollectionLanguage\": \"<string>\",\n    \"digitsLimit\": \"<string>\",\n    \"transfer\": \"+96654999999\",\n    \"queueName\": \"<string>\"\n  },\n  \"referenceId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"message\": \"null\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac7aa21f-5a02-4919-b7b0-9912e97ed703",
+          "name": "Retrieves call status",
+          "request": {
+            "name": "Retrieves call status",
+            "description": {
+              "content": "This operation retrieves the call status(es) of all the dials pertaining to a particular callId. A callId is provided in the API response whenever a POST/Calls API is accepted. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                "voice-call-log",
+                ":callId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "callId",
+                  "description": "(Required) identifier of the call API request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) applicationId found on Unifonic Console",
+                "key": "appsId",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91847f33-3f2e-483b-8c78-283c0aebe212",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    "voice-call-log",
+                    ":callId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "callId",
+                      "description": "(Required) identifier of the call API request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-authenticate-app-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) applicationId found on Unifonic Console",
+                    "key": "appsId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callId\": \"string\",\n  \"type\": \"<string>\",\n  \"retry\": \"string\",\n  \"callerId\": \"string\",\n  \"recipients\": [\n    {\n      \"duration\": \"string\",\n      \"status\": \"queued\",\n      \"number\": \"string\"\n    },\n    {\n      \"duration\": \"string\",\n      \"status\": \"busy\",\n      \"number\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://authenticate.cloud.api.unifonic.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-authenticate-app-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "79cb10d7-64a9-4b2f-9ece-ae1e5afe2b8e",
+    "name": "Unifonic Authenticate Call Management and Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Handles verifications with OTP to multiple channels\n\nContact Support:\n Name: Unifonic Support\n Email: support@unifonic.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unifonic Authenticate Call Management and Status Call Queue Management API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-authenticate-app-id",
+      "value": "{{x-authenticate-app-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Call Queue Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves a specific call queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://authenticate.cloud.api.unifonic.com/providers/queues/:queueName",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "queueName",
+                "value": "",
+                "type": "path",
+                "description": "the queue name where the queue details is to be retrieved"
+              }
+            ]
+          },
+          "docs": "This operation retrieves the details in a specific call queue"
+        },
+        {
+          "info": {
+            "name": "Dequeue the first caller in queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://authenticate.cloud.api.unifonic.com/providers/queues/:queueName/dequeue",
+            "headers": [
+              {
+                "name": "appsId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "redirectTo",
+                "value": "",
+                "type": "query",
+                "description": "the callerId to redirect the call to"
+              },
+              {
+                "name": "queueName",
+                "value": "",
+                "type": "path",
+                "description": "Requested number of resources to be provided in response"
+              }
+            ]
+          },
+          "docs": "This operation creates a request to dequeue the caller who is currently the first in line towards another callerId which represents the service agent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
