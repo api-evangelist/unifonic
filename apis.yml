@@ -58,6 +58,11 @@ apis:
   - WhatsApp
   - Conversations
   - Templates
+  - Webhook
+  tags_raw:
+  - WhatsApp
+  - Conversations
+  - Templates
   - Webhooks
   properties:
   - url: https://docs.unifonic.com/articles/products-documentation/whatsapp-apis
@@ -119,6 +124,8 @@ apis:
   humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
   baseURL: https://el.cloud.unifonic.com
   tags:
+  - REST
+  tags_raw:
   - Rest
   properties:
   - type: OpenAPI
@@ -135,6 +142,8 @@ apis:
   humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
   baseURL: https://el.cloud.unifonic.com
   tags:
+  - Verification
+  tags_raw:
   - Verifications
   properties:
   - type: OpenAPI
@@ -151,6 +160,8 @@ apis:
   humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
   baseURL: https://el.cloud.unifonic.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
