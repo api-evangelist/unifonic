@@ -154,7 +154,7 @@ apis:
   humanURL: https://docs.unifonic.com/articles/api-documentation/sms-api
   baseURL: https://el.cloud.unifonic.com
   tags:
-  - Verification
+  - Verifications
   tags_raw:
   - Verifications
   properties:
