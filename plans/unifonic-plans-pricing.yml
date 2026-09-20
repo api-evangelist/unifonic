@@ -1,0 +1,43 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.unifonic.com/en/pricing
+sources:
+- https://www.unifonic.com/en/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T130003
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+published: true
+note: Three plans; two numeric monthly fees, Intelligence is custom. Prices exclusive of taxes per FAQ.
+plan_count: 3
+currency: USD
+plans:
+- name: Connect
+  price_text: $499
+  price: 499
+  currency: USD
+  period: month
+  included_quota: 'Access to Unifonic Platform; WhatsApp API — 25 msg/s; Multi-channel campaigns — 10,000
+    monthly messages; Channels: SMS, Voice, Email & WhatsApp; Add-ons: Documentation Hub & Reporting;
+    Basic Support'
+  overage: Any usage beyond plan limits (like messaging volume) is billed as additional consumption.
+- name: Engagement
+  price_text: $999
+  price: 999
+  currency: USD
+  period: month
+  included_quota: Everything in Connect Plan; Multi-channel campaigns — 20,000 monthly messages; Chatbot
+    — 5,000 monthly sessions; Agent Console — 1 Basic Seat; Facebook Messenger & Instagram; Business Support
+  overage: Any usage beyond plan limits (like messaging volume) is billed as additional consumption.
+- name: Intelligence
+  price_text: Custom Pricing
+  period: none
+  included_quota: Everything in Engagement Plan; WhatsApp API — 50 msg/s; Custom campaign limits; AI Chatbot
+    custom sessions; Agent Console advanced with co-pilot; Flow Studio, Audience & Authenticate; Premium
+    Support
+rate_limit_statements:
+- WhatsApp API — 25 msg/s
+- WhatsApp API — 50 msg/s

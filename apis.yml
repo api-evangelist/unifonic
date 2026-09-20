@@ -203,6 +203,10 @@ apis:
   - type: Documentation
     url: https://docs.unifonic.com/articles/api-documentation/voice
 common:
+- type: Pricing
+  url: https://www.unifonic.com/en/pricing
+- type: Plans
+  url: plans/unifonic-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/unifonic-capability-edges.yml
   name: Unifonic Business Capability Map
