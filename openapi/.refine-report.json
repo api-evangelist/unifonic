@@ -1,26 +1,36 @@
 {
   "provider": "unifonic",
   "sources": [
-    "unifonic-call-management-and-status-api-openapi.yml",
-    "unifonic-call-queue-management-api-openapi.yml",
-    "unifonic-number-masking-api-openapi.yml",
-    "unifonic-rest-api-openapi.yml",
-    "unifonic-verifications-api-openapi.yml",
-    "unifonic-webhooks-api-openapi.yml",
-    "unifonic-wrapper-api-openapi.yml"
+    "_original/unifonic-authenticate-openapi-original.json",
+    "_original/unifonic-sms-openapi-original.json",
+    "_original/unifonic-voice-openapi-original.json"
   ],
   "outputs": [
+    "unifonic-verifications-api-openapi.yml",
+    "unifonic-rest-api-openapi.yml",
+    "unifonic-wrapper-api-openapi.yml",
     "unifonic-call-management-and-status-api-openapi.yml",
     "unifonic-call-queue-management-api-openapi.yml",
     "unifonic-number-masking-api-openapi.yml",
-    "unifonic-rest-api-openapi.yml",
-    "unifonic-verifications-api-openapi.yml",
-    "unifonic-webhooks-api-openapi.yml",
-    "unifonic-wrapper-api-openapi.yml"
+    "unifonic-webhooks-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "unifonic-authenticate-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "unifonic-sms-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "unifonic-voice-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "unifonic-call-management-and-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unifonic-call-queue-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unifonic-number-masking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unifonic-rest-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unifonic-verifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unifonic-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unifonic-wrapper-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

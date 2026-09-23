@@ -1,18 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Unifonic Authenticate Call Management and Status Number Masking API
-  description: Handles verifications with OTP to multiple channels
-  contact:
-    name: Unifonic Support
-    url: support.unifonic.com/
-    email: support@unifonic.com
-  version: 2.0.0
+  title: Unifonic Voice Number Masking API
+  description: The Unifonic Voice Call APIs provides a industry-leading experience for developers to programmatically trigger and control voice calls.
+  version: 1.2.0
 servers:
-- url: https://authenticate.cloud.api.unifonic.com
-  variables: {}
-security:
-- authenticate-app-id: []
-  Authorization: []
+- url: https://voice.unifonic.com/v1
 tags:
 - name: Number Masking
 paths:
@@ -167,29 +159,6 @@ paths:
           description: Success
 components:
   schemas:
-    Two_Way_Masking_Session_Create:
-      type: object
-      description: payload for creating a number masking session
-      required:
-      - to
-      - from
-      properties:
-        to:
-          type: string
-          example: '+966555000000'
-          description: party A of a number masking session
-        from:
-          type: string
-          example: '+966555000001'
-          description: party B of a number masking session
-    Get_Masking_Sessions:
-      type: object
-      description: all masking sessions in scope
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Create_Masking_Session_Response'
     Create_Masking_Session_Response:
       type: object
       required:
@@ -225,6 +194,29 @@ components:
         requestBody:
           type: string
           description: payload which was accepted
+    Get_Masking_Sessions:
+      type: object
+      description: all masking sessions in scope
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Create_Masking_Session_Response'
+    Two_Way_Masking_Session_Create:
+      type: object
+      description: payload for creating a number masking session
+      required:
+      - to
+      - from
+      properties:
+        to:
+          type: string
+          example: '+966555000000'
+          description: party A of a number masking session
+        from:
+          type: string
+          example: '+966555000001'
+          description: party B of a number masking session
     One_Way_Masking_Session_Create:
       type: object
       description: payload for creating a number masking session
@@ -235,16 +227,6 @@ components:
           type: string
           example: '+966555000000'
           description: party A of a number masking session
-  securitySchemes:
-    authenticate-app-id:
-      type: apiKey
-      name: x-authenticate-app-id
-      in: header
-    Authorization:
-      type: apiKey
-      description: Bearer Auth Token
-      name: Authorization
-      in: header
 x-readme:
   explorer-enabled: true
   proxy-enabled: true

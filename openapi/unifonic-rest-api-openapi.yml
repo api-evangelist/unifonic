@@ -1,18 +1,16 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Unifonic Authenticate Call Management and Status Rest API
-  description: Handles verifications with OTP to multiple channels
-  contact:
-    name: Unifonic Support
-    url: support.unifonic.com/
-    email: support@unifonic.com
-  version: 2.0.0
+  version: '1.0'
+  title: SMS Rest API
+  description: '## Introduction
+
+
+    Send SMS messages using Unifonic Messaging API.'
+  contact: {}
 servers:
-- url: https://authenticate.cloud.api.unifonic.com
-  variables: {}
+- url: https://el.cloud.unifonic.com
 security:
-- authenticate-app-id: []
-  Authorization: []
+- auth: []
 tags:
 - name: Rest
   description: ''
@@ -351,7 +349,7 @@ paths:
               schema: {}
   /rest/SMS/messages:
     post:
-      description: Unifonic Send API allows you to send  text messages to users around the globe through simple RESTful APIs
+      description: Unifonic Send API allows you to send text messages to users around the globe through simple RESTful APIs
       summary: Send message
       tags:
       - Rest
@@ -464,31 +462,14 @@ paths:
               schema: {}
 components:
   schemas:
-    GetMessagesDetailsresponse:
-      title: GetMessagesDetailsresponse
-      description: Gets details of messages with optional filters. Returns paginated messages, next page or previous page
+    Sendscheduledmessagesresponse:
+      title: Sendscheduledmessagesresponse
+      description: Schedules one message to be sent in the future.
       example:
         success: true
         message: ''
         errorCode: ER-00
-        data:
-          messages:
-          - MessageID: 3200017891896
-            CorrelationID: ''
-            Status: Sent
-            MessageBody: test
-            Country: World
-            DLR: Sent
-            NumberOfUnits: 0
-            Cost: 0
-            SenderID: sender
-            Recipient: '966000000000'
-            DateCreated: '2018-05-14 08:20:25.580'
-            DateSent: '2018-05-14 08:20:25.621'
-          CurrencyCode: ''
-          TotalTextMessages: 1
-          Next: ''
-          Prev: ''
+        Status: Accepted
       type: object
       properties:
         success:
@@ -498,55 +479,23 @@ components:
         message:
           description: The Error message if its false, Null if its true
           example:
-            message: ''
-          type: string
-        errorCode:
-          description: the error code if there is any
-          example:
-            errorCode: ER-00
-          type: string
-        data:
-          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
-          type: object
-      required:
-      - success
-      - message
-      - errorCode
-      - data
-    StopScheduledMessagesresponse:
-      title: StopScheduledMessagesresponse
-      description: Delete (Stops) scheduled message,If MessageID is specified, only one message is stopped.  Otherwise all messages are stopped
-      example:
-        success: 'true'
-        message: ''
-        errorCode: ER-00
-        data: {}
-      type: object
-      properties:
-        success:
-          description: The request sent successfully
-          example: 'true'
-          type: string
-        message:
-          description: The Error message if its false, Null if its true
-          example:
             message: Missing parameter AppSid
           type: string
         errorCode:
-          description: Error Code if there is an error
+          description: The error code if there is any
           example:
             errorCode: ER-02
           type: string
-        data:
-          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+        Status:
+          description: Accepted or Rejected
           example:
-            data: {}
-          type: object
+            Status: Rejected
+          type: string
       required:
       - success
       - message
       - errorCode
-      - data
+      - Status
     Sendresponse:
       title: Sendresponse
       description: Sends one message.
@@ -764,14 +713,65 @@ components:
       - message
       - errorCode
       - data
-    Sendscheduledmessagesresponse:
-      title: Sendscheduledmessagesresponse
-      description: Schedules one message to be sent in the future.
+    StopScheduledMessagesresponse:
+      title: StopScheduledMessagesresponse
+      description: Delete (Stops) scheduled message,If MessageID is specified, only one message is stopped.  Otherwise all messages are stopped
+      example:
+        success: 'true'
+        message: ''
+        errorCode: ER-00
+        data: {}
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: 'true'
+          type: string
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: Missing parameter AppSid
+          type: string
+        errorCode:
+          description: Error Code if there is an error
+          example:
+            errorCode: ER-02
+          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          example:
+            data: {}
+          type: object
+      required:
+      - success
+      - message
+      - errorCode
+      - data
+    GetMessagesDetailsresponse:
+      title: GetMessagesDetailsresponse
+      description: Gets details of messages with optional filters. Returns paginated messages, next page or previous page
       example:
         success: true
         message: ''
         errorCode: ER-00
-        Status: Accepted
+        data:
+          messages:
+          - MessageID: 3200017891896
+            CorrelationID: ''
+            Status: Sent
+            MessageBody: test
+            Country: World
+            DLR: Sent
+            NumberOfUnits: 0
+            Cost: 0
+            SenderID: sender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-14 08:20:25.580'
+            DateSent: '2018-05-14 08:20:25.621'
+          CurrencyCode: ''
+          TotalTextMessages: 1
+          Next: ''
+          Prev: ''
       type: object
       properties:
         success:
@@ -781,33 +781,26 @@ components:
         message:
           description: The Error message if its false, Null if its true
           example:
-            message: Missing parameter AppSid
+            message: ''
           type: string
         errorCode:
-          description: The error code if there is any
+          description: the error code if there is any
           example:
-            errorCode: ER-02
+            errorCode: ER-00
           type: string
-        Status:
-          description: Accepted or Rejected
-          example:
-            Status: Rejected
-          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          type: object
       required:
       - success
       - message
       - errorCode
-      - Status
+      - data
   securitySchemes:
-    authenticate-app-id:
-      type: apiKey
-      name: x-authenticate-app-id
-      in: header
-    Authorization:
-      type: apiKey
-      description: Bearer Auth Token
-      name: Authorization
-      in: header
+    auth:
+      type: http
+      scheme: basic
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
+  samples-enabled: true

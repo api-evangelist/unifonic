@@ -1,18 +1,16 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Unifonic Authenticate Call Management and Status Wrapper API
-  description: Handles verifications with OTP to multiple channels
-  contact:
-    name: Unifonic Support
-    url: support.unifonic.com/
-    email: support@unifonic.com
-  version: 2.0.0
+  version: '1.0'
+  title: SMS Wrapper API
+  description: '## Introduction
+
+
+    Send SMS messages using Unifonic Messaging API.'
+  contact: {}
 servers:
-- url: https://authenticate.cloud.api.unifonic.com
-  variables: {}
+- url: https://el.cloud.unifonic.com
 security:
-- authenticate-app-id: []
-  Authorization: []
+- auth: []
 tags:
 - name: Wrapper
   description: ''
@@ -80,7 +78,7 @@ paths:
               schema: {}
   /wrapper/sendSMS.php:
     post:
-      description: Unifonic Send Wrapper API allows you to send  text messages to  multiple users at the same time
+      description: Unifonic Send Wrapper API allows you to send text messages to multiple users at the same time
       summary: Send message
       tags:
       - Wrapper
@@ -189,15 +187,10 @@ components:
       - Error
       - MessageID
   securitySchemes:
-    authenticate-app-id:
-      type: apiKey
-      name: x-authenticate-app-id
-      in: header
-    Authorization:
-      type: apiKey
-      description: Bearer Auth Token
-      name: Authorization
-      in: header
+    auth:
+      type: http
+      scheme: basic
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
+  samples-enabled: true
