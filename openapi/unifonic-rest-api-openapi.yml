@@ -462,40 +462,6 @@ paths:
               schema: {}
 components:
   schemas:
-    Sendscheduledmessagesresponse:
-      title: Sendscheduledmessagesresponse
-      description: Schedules one message to be sent in the future.
-      example:
-        success: true
-        message: ''
-        errorCode: ER-00
-        Status: Accepted
-      type: object
-      properties:
-        success:
-          description: The request sent successfully
-          example: true
-          type: boolean
-        message:
-          description: The Error message if its false, Null if its true
-          example:
-            message: Missing parameter AppSid
-          type: string
-        errorCode:
-          description: The error code if there is any
-          example:
-            errorCode: ER-02
-          type: string
-        Status:
-          description: Accepted or Rejected
-          example:
-            Status: Rejected
-          type: string
-      required:
-      - success
-      - message
-      - errorCode
-      - Status
     Sendresponse:
       title: Sendresponse
       description: Sends one message.
@@ -537,6 +503,40 @@ components:
       - message
       - errorCode
       - data
+    Sendscheduledmessagesresponse:
+      title: Sendscheduledmessagesresponse
+      description: Schedules one message to be sent in the future.
+      example:
+        success: true
+        message: ''
+        errorCode: ER-00
+        Status: Accepted
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: true
+          type: boolean
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: Missing parameter AppSid
+          type: string
+        errorCode:
+          description: The error code if there is any
+          example:
+            errorCode: ER-02
+          type: string
+        Status:
+          description: Accepted or Rejected
+          example:
+            Status: Rejected
+          type: string
+      required:
+      - success
+      - message
+      - errorCode
+      - Status
     GetScheduledMessageresponse:
       title: GetScheduledMessageresponse
       description: GetsDetails of specified scheduled message, If MessageID is specified, only one message is returned,Otherwise all messages(paginated) are queried.
