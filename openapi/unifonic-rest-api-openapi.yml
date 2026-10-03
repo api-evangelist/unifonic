@@ -462,6 +462,40 @@ paths:
               schema: {}
 components:
   schemas:
+    Sendscheduledmessagesresponse:
+      title: Sendscheduledmessagesresponse
+      description: Schedules one message to be sent in the future.
+      example:
+        success: true
+        message: ''
+        errorCode: ER-00
+        Status: Accepted
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: true
+          type: boolean
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: Missing parameter AppSid
+          type: string
+        errorCode:
+          description: The error code if there is any
+          example:
+            errorCode: ER-02
+          type: string
+        Status:
+          description: Accepted or Rejected
+          example:
+            Status: Rejected
+          type: string
+      required:
+      - success
+      - message
+      - errorCode
+      - Status
     Sendresponse:
       title: Sendresponse
       description: Sends one message.
@@ -503,14 +537,65 @@ components:
       - message
       - errorCode
       - data
-    Sendscheduledmessagesresponse:
-      title: Sendscheduledmessagesresponse
-      description: Schedules one message to be sent in the future.
+    StopScheduledMessagesresponse:
+      title: StopScheduledMessagesresponse
+      description: Delete (Stops) scheduled message,If MessageID is specified, only one message is stopped.  Otherwise all messages are stopped
+      example:
+        success: 'true'
+        message: ''
+        errorCode: ER-00
+        data: {}
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: 'true'
+          type: string
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: Missing parameter AppSid
+          type: string
+        errorCode:
+          description: Error Code if there is an error
+          example:
+            errorCode: ER-02
+          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          example:
+            data: {}
+          type: object
+      required:
+      - success
+      - message
+      - errorCode
+      - data
+    GetMessagesDetailsresponse:
+      title: GetMessagesDetailsresponse
+      description: Gets details of messages with optional filters. Returns paginated messages, next page or previous page
       example:
         success: true
         message: ''
         errorCode: ER-00
-        Status: Accepted
+        data:
+          messages:
+          - MessageID: 3200017891896
+            CorrelationID: ''
+            Status: Sent
+            MessageBody: test
+            Country: World
+            DLR: Sent
+            NumberOfUnits: 0
+            Cost: 0
+            SenderID: sender
+            Recipient: '966000000000'
+            DateCreated: '2018-05-14 08:20:25.580'
+            DateSent: '2018-05-14 08:20:25.621'
+          CurrencyCode: ''
+          TotalTextMessages: 1
+          Next: ''
+          Prev: ''
       type: object
       properties:
         success:
@@ -520,23 +605,21 @@ components:
         message:
           description: The Error message if its false, Null if its true
           example:
-            message: Missing parameter AppSid
+            message: ''
           type: string
         errorCode:
-          description: The error code if there is any
+          description: the error code if there is any
           example:
-            errorCode: ER-02
+            errorCode: ER-00
           type: string
-        Status:
-          description: Accepted or Rejected
-          example:
-            Status: Rejected
-          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          type: object
       required:
       - success
       - message
       - errorCode
-      - Status
+      - data
     GetScheduledMessageresponse:
       title: GetScheduledMessageresponse
       description: GetsDetails of specified scheduled message, If MessageID is specified, only one message is returned,Otherwise all messages(paginated) are queried.
@@ -688,89 +771,6 @@ components:
             TimeScheduled: '2020-04-12 11:53:00'
           TotalTextMessages: 20
           Next: http://basic.unifonic.com/rest/SMS/2017-08-01/messages/scheduledmessages?AppSid=6v253153s1g7831s5&beforeSid=966000000000,7,AltSender,3200017891492,,2018-05-13%2008:07:31.727&Limit=20
-          Prev: ''
-      type: object
-      properties:
-        success:
-          description: The request sent successfully
-          example: true
-          type: boolean
-        message:
-          description: The Error message if its false, Null if its true
-          example:
-            message: ''
-          type: string
-        errorCode:
-          description: the error code if there is any
-          example:
-            errorCode: ER-00
-          type: string
-        data:
-          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
-          type: object
-      required:
-      - success
-      - message
-      - errorCode
-      - data
-    StopScheduledMessagesresponse:
-      title: StopScheduledMessagesresponse
-      description: Delete (Stops) scheduled message,If MessageID is specified, only one message is stopped.  Otherwise all messages are stopped
-      example:
-        success: 'true'
-        message: ''
-        errorCode: ER-00
-        data: {}
-      type: object
-      properties:
-        success:
-          description: The request sent successfully
-          example: 'true'
-          type: string
-        message:
-          description: The Error message if its false, Null if its true
-          example:
-            message: Missing parameter AppSid
-          type: string
-        errorCode:
-          description: Error Code if there is an error
-          example:
-            errorCode: ER-02
-          type: string
-        data:
-          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
-          example:
-            data: {}
-          type: object
-      required:
-      - success
-      - message
-      - errorCode
-      - data
-    GetMessagesDetailsresponse:
-      title: GetMessagesDetailsresponse
-      description: Gets details of messages with optional filters. Returns paginated messages, next page or previous page
-      example:
-        success: true
-        message: ''
-        errorCode: ER-00
-        data:
-          messages:
-          - MessageID: 3200017891896
-            CorrelationID: ''
-            Status: Sent
-            MessageBody: test
-            Country: World
-            DLR: Sent
-            NumberOfUnits: 0
-            Cost: 0
-            SenderID: sender
-            Recipient: '966000000000'
-            DateCreated: '2018-05-14 08:20:25.580'
-            DateSent: '2018-05-14 08:20:25.621'
-          CurrencyCode: ''
-          TotalTextMessages: 1
-          Next: ''
           Prev: ''
       type: object
       properties:
