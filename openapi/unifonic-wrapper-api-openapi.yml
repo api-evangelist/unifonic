@@ -154,19 +154,6 @@ paths:
               schema: {}
 components:
   schemas:
-    GetMessageQueryresponse:
-      title: GetMessageQueryresponse
-      description: Gets details of specified message
-      example:
-        STATUS05: The message has been sent successfully
-      type: object
-      properties:
-        STATUS05:
-          description: The message statues
-          example: '"The message has been sent successfully"'
-          type: string
-      required:
-      - STATUS05
     SendWrapperresponse:
       title: SendWrapperresponse
       description: Sends message to one or more recipients.
@@ -186,6 +173,19 @@ components:
       required:
       - Error
       - MessageID
+    GetMessageQueryresponse:
+      title: GetMessageQueryresponse
+      description: Gets details of specified message
+      example:
+        STATUS05: The message has been sent successfully
+      type: object
+      properties:
+        STATUS05:
+          description: The message statues
+          example: '"The message has been sent successfully"'
+          type: string
+      required:
+      - STATUS05
   securitySchemes:
     auth:
       type: http

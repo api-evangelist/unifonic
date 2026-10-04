@@ -462,115 +462,6 @@ paths:
               schema: {}
 components:
   schemas:
-    Sendscheduledmessagesresponse:
-      title: Sendscheduledmessagesresponse
-      description: Schedules one message to be sent in the future.
-      example:
-        success: true
-        message: ''
-        errorCode: ER-00
-        Status: Accepted
-      type: object
-      properties:
-        success:
-          description: The request sent successfully
-          example: true
-          type: boolean
-        message:
-          description: The Error message if its false, Null if its true
-          example:
-            message: Missing parameter AppSid
-          type: string
-        errorCode:
-          description: The error code if there is any
-          example:
-            errorCode: ER-02
-          type: string
-        Status:
-          description: Accepted or Rejected
-          example:
-            Status: Rejected
-          type: string
-      required:
-      - success
-      - message
-      - errorCode
-      - Status
-    Sendresponse:
-      title: Sendresponse
-      description: Sends one message.
-      type: object
-      properties:
-        success:
-          description: The message sent successfully
-          example: 'true'
-          type: string
-        message:
-          description: The Error message if its false, Null if its true
-          example:
-            message: ''
-          type: string
-        errorCode:
-          description: The error code if there is any
-          example:
-            errorCode: ER-00
-          type: string
-        data:
-          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
-          example:
-            success: true
-            message: ''
-            errorCode: ER-00
-            data:
-              MessageID: 2000000205103
-              CorrelationID: ''
-              Status: Queued
-              NumberOfUnits: 0
-              Cost: 0
-              Balance: 0
-              Recipient: '966000000000'
-              TimeCreated: '2018-05-21 08:17:47.839'
-              CurrencyCode: ''
-          type: object
-      required:
-      - success
-      - message
-      - errorCode
-      - data
-    StopScheduledMessagesresponse:
-      title: StopScheduledMessagesresponse
-      description: Delete (Stops) scheduled message,If MessageID is specified, only one message is stopped.  Otherwise all messages are stopped
-      example:
-        success: 'true'
-        message: ''
-        errorCode: ER-00
-        data: {}
-      type: object
-      properties:
-        success:
-          description: The request sent successfully
-          example: 'true'
-          type: string
-        message:
-          description: The Error message if its false, Null if its true
-          example:
-            message: Missing parameter AppSid
-          type: string
-        errorCode:
-          description: Error Code if there is an error
-          example:
-            errorCode: ER-02
-          type: string
-        data:
-          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
-          example:
-            data: {}
-          type: object
-      required:
-      - success
-      - message
-      - errorCode
-      - data
     GetMessagesDetailsresponse:
       title: GetMessagesDetailsresponse
       description: Gets details of messages with optional filters. Returns paginated messages, next page or previous page
@@ -614,6 +505,74 @@ components:
           type: string
         data:
           description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          type: object
+      required:
+      - success
+      - message
+      - errorCode
+      - data
+    Sendscheduledmessagesresponse:
+      title: Sendscheduledmessagesresponse
+      description: Schedules one message to be sent in the future.
+      example:
+        success: true
+        message: ''
+        errorCode: ER-00
+        Status: Accepted
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: true
+          type: boolean
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: Missing parameter AppSid
+          type: string
+        errorCode:
+          description: The error code if there is any
+          example:
+            errorCode: ER-02
+          type: string
+        Status:
+          description: Accepted or Rejected
+          example:
+            Status: Rejected
+          type: string
+      required:
+      - success
+      - message
+      - errorCode
+      - Status
+    StopScheduledMessagesresponse:
+      title: StopScheduledMessagesresponse
+      description: Delete (Stops) scheduled message,If MessageID is specified, only one message is stopped.  Otherwise all messages are stopped
+      example:
+        success: 'true'
+        message: ''
+        errorCode: ER-00
+        data: {}
+      type: object
+      properties:
+        success:
+          description: The request sent successfully
+          example: 'true'
+          type: string
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: Missing parameter AppSid
+          type: string
+        errorCode:
+          description: Error Code if there is an error
+          example:
+            errorCode: ER-02
+          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          example:
+            data: {}
           type: object
       required:
       - success
@@ -790,6 +749,47 @@ components:
           type: string
         data:
           description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          type: object
+      required:
+      - success
+      - message
+      - errorCode
+      - data
+    Sendresponse:
+      title: Sendresponse
+      description: Sends one message.
+      type: object
+      properties:
+        success:
+          description: The message sent successfully
+          example: 'true'
+          type: string
+        message:
+          description: The Error message if its false, Null if its true
+          example:
+            message: ''
+          type: string
+        errorCode:
+          description: The error code if there is any
+          example:
+            errorCode: ER-00
+          type: string
+        data:
+          description: Message id, Time created, correlation id., status, number of units, cost, balance, Recipient
+          example:
+            success: true
+            message: ''
+            errorCode: ER-00
+            data:
+              MessageID: 2000000205103
+              CorrelationID: ''
+              Status: Queued
+              NumberOfUnits: 0
+              Cost: 0
+              Balance: 0
+              Recipient: '966000000000'
+              TimeCreated: '2018-05-21 08:17:47.839'
+              CurrencyCode: ''
           type: object
       required:
       - success
