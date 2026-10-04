@@ -58,6 +58,7 @@ tags:
 - OTP
 - Customer Engagement
 - Saudi Arabia
+- MENA
 apis:
 - aid: unifonic:unifonic-conversations-whatsapp-api
   name: Unifonic Conversations (WhatsApp) API
