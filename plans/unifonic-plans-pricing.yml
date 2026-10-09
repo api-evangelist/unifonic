@@ -45,3 +45,31 @@ plans:
 rate_limit_statements:
 - WhatsApp API — 25 msg/s
 - WhatsApp API — 50 msg/s
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units: []
+  plans:
+  - name: Connect
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Engagement
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Intelligence
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
