@@ -159,14 +159,6 @@ paths:
           description: Success
 components:
   schemas:
-    Get_Masking_Sessions:
-      type: object
-      description: all masking sessions in scope
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Create_Masking_Session_Response'
     One_Way_Masking_Session_Create:
       type: object
       description: payload for creating a number masking session
@@ -177,21 +169,6 @@ components:
           type: string
           example: '+966555000000'
           description: party A of a number masking session
-    Two_Way_Masking_Session_Create:
-      type: object
-      description: payload for creating a number masking session
-      required:
-      - to
-      - from
-      properties:
-        to:
-          type: string
-          example: '+966555000000'
-          description: party A of a number masking session
-        from:
-          type: string
-          example: '+966555000001'
-          description: party B of a number masking session
     Create_Masking_Session_Response:
       type: object
       required:
@@ -227,6 +204,29 @@ components:
         requestBody:
           type: string
           description: payload which was accepted
+    Two_Way_Masking_Session_Create:
+      type: object
+      description: payload for creating a number masking session
+      required:
+      - to
+      - from
+      properties:
+        to:
+          type: string
+          example: '+966555000000'
+          description: party A of a number masking session
+        from:
+          type: string
+          example: '+966555000001'
+          description: party B of a number masking session
+    Get_Masking_Sessions:
+      type: object
+      description: all masking sessions in scope
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Create_Masking_Session_Response'
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
